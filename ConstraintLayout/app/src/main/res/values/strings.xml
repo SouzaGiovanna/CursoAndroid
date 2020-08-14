@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Constraint Layout</string>
+    <string name="titulo_app">Aprenda sobre edição de imagens</string>
+    <string name="data">14/08/2020</string>
+    <string name="texto">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+    <string name="autor">Giovanna de Souza</string>
+    <string name="btn_proxima">Próxima</string>
+    <string name="btn_voltar">Anterior</string>
 </resources>
