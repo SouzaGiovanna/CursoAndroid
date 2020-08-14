@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Projeto Sorteio</string>
+    <string name="val1">Nenhum número selecionado</string>
+    <string name="val2">O número selecionado: </string>
+</resources>
