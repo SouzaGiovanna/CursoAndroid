@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Netflix</string>
-    <string name="serie">House of Cards</string>
+    <string name="serie">Kimetsu no Yaiba</string>
     <string name="temp_ep">S1:E2</string>
     <string name="mensage">Menu mensagem</string>
     <string name="volume">Menu volume</string>
