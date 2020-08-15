@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Netflix</string>
+    <string name="serie">House of Cards</string>
+    <string name="temp_ep">S1:E2</string>
+    <string name="mensage">Menu mensagem</string>
+    <string name="volume">Menu volume</string>
+    <string name="avaliacao">Menu avaliações</string>
+    <string name="conteudo">Menu episódios</string>
 </resources>
