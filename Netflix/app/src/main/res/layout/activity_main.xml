@@ -124,10 +124,11 @@
         android:layout_height="300dp"
         android:layout_marginTop="56dp"
         android:scaleType="centerCrop"
+        android:src="@drawable/tanjiro_and_nezuko_kimetsu_no_yaiba_uhdpaper_com_4k_5_750_wp_thumbnail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:srcCompat="@drawable/thumb_350_1028306" />
+        tools:srcCompat="@drawable/pegasuu" />
 
     <SeekBar
         android:id="@+id/seekBar"
