@@ -2,8 +2,11 @@ package com.cursoandroid.appmapa;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.graphics.Camera;
 import android.os.Bundle;
+import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -11,7 +14,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener{
 
     private GoogleMap mMap;
 
@@ -38,9 +41,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng etec = new LatLng(-23.5540153, -46.3981533);
+        mMap.addMarker(new MarkerOptions().position(etec).title("Marker in ETEC de Guaianazes"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(etec));
+
+        mMap.setOnMapClickListener(this);
+    }
+
+    @Override
+    public void onMapClick(LatLng latLng) {
+        //String texto = String.format("%.5f", "%.5f", latLng.latitude, latLng.longitude);
+        //Toast.makeText(this, texto, Toast.LENGTH_LONG).show();
+
+        //CameraUpdate update = CameraUpdateFactory.newLatLng(latLng);
+        CameraUpdate update = CameraUpdateFactory.newLatLngZoom(latLng, 5);
+        mMap.animateCamera(update);
     }
 }
