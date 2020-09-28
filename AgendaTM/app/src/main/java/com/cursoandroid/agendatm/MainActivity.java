@@ -11,7 +11,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    TextView txtNome, txtEmail, txtTelefone, txtAssunto, txtMensagem;
+    private EditText txtNome;
+    private EditText txtEmail;
+    private EditText txtTelefone;
+    private EditText txtAssunto;
+    private EditText txtMensagem;
+
     int cod = 0;
 
     @Override
@@ -38,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
             else mensagemEmailInvalido();
         }
         else mensagemCampoVazio();
+    }
+
+    public void cancelar(View view){
+        clear((ViewGroup)findViewById(R.id.containerConteudo));
+        txtNome.requestFocus();
     }
 
     public boolean verificarCampoVazio(){

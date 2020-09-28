@@ -135,6 +135,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginLeft="30dp"
                 android:background="@drawable/botoes"
+                android:onClick="cancelar"
                 android:text="@string/btn_cancelar"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
