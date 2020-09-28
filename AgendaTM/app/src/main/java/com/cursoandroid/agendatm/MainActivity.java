@@ -3,7 +3,10 @@ package com.cursoandroid.agendatm;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,9 +28,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void salvar(View view){
         if(verificarCampoVazio()){
-            cod += 1;
-            Toast.makeText(this, "Código: " +cod, Toast.LENGTH_SHORT).show();
+            if(validarFormatoEmail(txtEmail.getText().toString())) {
+                cod += 1;
+                Toast.makeText(this, "Código: " + cod, Toast.LENGTH_SHORT).show();
+
+                clear((ViewGroup)findViewById(R.id.containerConteudo));
+                txtNome.requestFocus();
+            }
+            else mensagemEmailInvalido();
         }
+        else mensagemCampoVazio();
     }
 
     public boolean verificarCampoVazio(){
@@ -52,5 +62,31 @@ public class MainActivity extends AppCompatActivity {
             preenchido = true;
         }
         return preenchido;
+    }
+
+    public void mensagemCampoVazio(){
+        Toast.makeText(this, "Preencha os campos vazios para continuar", Toast.LENGTH_SHORT).show();
+    }
+
+    public void mensagemEmailInvalido(){
+        Toast.makeText(this, "Digite um email válido", Toast.LENGTH_SHORT).show();
+    }
+
+    public boolean validarFormatoEmail(final String email){
+        if(Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            return true;
+        }
+        else return false;
+    }
+
+    public void clear(ViewGroup group) {
+        int count = group.getChildCount();
+
+        for (int i = 0; i < count; i++) {
+            View view = group.getChildAt(i);
+            if (view instanceof EditText) {
+                ((EditText)view).setText("");
+            }
+        }
     }
 }
