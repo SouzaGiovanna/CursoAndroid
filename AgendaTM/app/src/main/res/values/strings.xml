@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">AgendaTm</string>
+    <string name="app_name">Agenda TM</string>
+    <string name="title_app">Agenda</string>
+    <string name="txt_nome">Nome</string>
+    <string name="txt_email">E-mail</string>
+    <string name="txt_telefone">Telefone</string>
+    <string name="txt_assunto">Assunto</string>
+    <string name="txt_mensagem">Mensagem</string>
+    <string name="btn_salvar">Salvar</string>
+    <string name="btn_cancelar">Cancelar</string>
 </resources>
