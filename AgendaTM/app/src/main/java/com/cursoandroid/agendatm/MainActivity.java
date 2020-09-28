@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtAssunto;
     private EditText txtMensagem;
 
+    private ContatoDAO contatoDao;
+
     int cod = 0;
 
     @Override
@@ -29,13 +31,27 @@ public class MainActivity extends AppCompatActivity {
         txtTelefone = findViewById(R.id.txtTelefone);
         txtAssunto = findViewById(R.id.txtAssunto);
         txtMensagem = findViewById(R.id.txtMensagem);
+
+        contatoDao = new ContatoDAO(this);
     }
 
     public void salvar(View view){
         if(verificarCampoVazio()){
             if(validarFormatoEmail(txtEmail.getText().toString())) {
-                cod += 1;
-                Toast.makeText(this, "Código: " + cod, Toast.LENGTH_SHORT).show();
+                Contato contato = new Contato();
+
+                contato.setNome(txtNome.getText().toString());
+                contato.setEmail(txtEmail.getText().toString());
+                contato.setTelefone(txtTelefone.getText().toString());
+                contato.setAssunto(txtAssunto.getText().toString());
+                contato.setMensagem(txtMensagem.getText().toString());
+
+                long pegarId = contatoDao.inserir(contato);
+
+                String resultado = String.format("id: %s", pegarId);
+
+                //cod += 1;
+                Toast.makeText(this, resultado, Toast.LENGTH_LONG).show();
 
                 clear((ViewGroup)findViewById(R.id.containerConteudo));
                 txtNome.requestFocus();
