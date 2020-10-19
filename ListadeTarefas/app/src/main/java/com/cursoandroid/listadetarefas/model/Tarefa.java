@@ -1,6 +1,8 @@
 package com.cursoandroid.listadetarefas.model;
 
-public class Tarefa {
+import java.io.Serializable;
+
+public class Tarefa implements Serializable {
     private long id;
     private String tarefa;
 

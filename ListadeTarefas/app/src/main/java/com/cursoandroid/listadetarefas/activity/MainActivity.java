@@ -1,20 +1,27 @@
 package com.cursoandroid.listadetarefas.activity;
 
+import android.app.Activity;
+import android.app.Application;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
+import com.cursoandroid.listadetarefas.DAO.TarefaDAO;
 import com.cursoandroid.listadetarefas.R;
 import com.cursoandroid.listadetarefas.RecyclerItemClickListener;
 import com.cursoandroid.listadetarefas.adapter.Adapter;
 import com.cursoandroid.listadetarefas.model.Tarefa;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Parcelable;
 import android.view.View;
 
 import android.view.Menu;
@@ -23,6 +30,7 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private List<Tarefa> listaTarefas = new ArrayList<>();
+    private Tarefa tarefaSelecionada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,14 +69,48 @@ public class MainActivity extends AppCompatActivity {
                         new RecyclerItemClickListener.OnItemClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
-                                Tarefa tarefa = listaTarefas.get(position);
-                                Toast.makeText(getApplicationContext(), "Item pressionado: " +tarefa.getTarefa(), Toast.LENGTH_SHORT).show();
+                                //Recuperando tarefa para edicão
+                                tarefaSelecionada = listaTarefas.get(position);
+
+                                //Envia tarefa para tela adicionar tarefa
+                                Intent intent = new Intent(getApplicationContext(), AdicionarTarefaActivity.class);
+                                intent.putExtra("tarefaSelecionada", tarefaSelecionada);
+
+                                startActivity(intent);
                             }
 
                             @Override
                             public void onLongItemClick(View view, int position) {
-                                Tarefa tarefa = listaTarefas.get(position);
-                                Toast.makeText(getApplicationContext(), "Clique longo: " +tarefa.getTarefa(), Toast.LENGTH_SHORT).show();
+                                //Recuperar tarefa para deletar
+                                tarefaSelecionada = listaTarefas.get(position);
+
+                                AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+
+                                //Configura título e mensagem
+                                dialog.setTitle("Confirmar exclusão");
+                                dialog.setMessage("Deseja excluir a tarefa: " +tarefaSelecionada.getTarefa()+ "?");
+
+                                dialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        TarefaDAO tarefaDAO = new TarefaDAO(getApplicationContext());
+
+                                        if(tarefaDAO.delete(tarefaSelecionada)){
+                                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                            startActivity(intent);
+
+                                            Toast.makeText(getApplicationContext(), "Tarefa deletada com sucesso!", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else{
+                                            Toast.makeText(getApplicationContext(), "Erro ao deletar a tarefa", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                                dialog.setNegativeButton("Não", null);
+
+                                //Exibir a dialog
+                                dialog.create();
+                                dialog.show();
                             }
 
                             @Override
@@ -110,34 +153,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void criarTarefas(){
-        Tarefa tarefa = new Tarefa("Homem Aranha - De volta ao lar");
-        this.listaTarefas.add(tarefa);
+        TarefaDAO tarefa = new TarefaDAO(getApplicationContext());
 
-        tarefa = new Tarefa("Mulher Maravilha");
-        this.listaTarefas.add(tarefa);
-
-        tarefa = new Tarefa("Liga da Justiça");
-        this.listaTarefas.add(tarefa);
-
-        tarefa = new Tarefa("Capitão América - Guerra Civil");
-        this.listaTarefas.add(tarefa);
-
-        tarefa = new Tarefa("It: A Coisa");
-        this.listaTarefas.add(tarefa);
-
-        tarefa = new Tarefa("Pica-Pau: O Filme");
-        this.listaTarefas.add(tarefa);
-
-        tarefa = new Tarefa("A Múmia");
-        this.listaTarefas.add(tarefa);
-
-        tarefa = new Tarefa("A Bela e A Fera");
-        this.listaTarefas.add(tarefa);
-
-        tarefa = new Tarefa("Meu Malvado Favorito 3");
-        this.listaTarefas.add(tarefa);
-
-        tarefa = new Tarefa("Carros 3");
-        this.listaTarefas.add(tarefa);
+        listaTarefas = tarefa.listar();
     }
 }
