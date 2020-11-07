@@ -1,4 +1,4 @@
-package com.cursoandroid.organizze;
+package com.cursoandroid.organizze.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.cursoandroid.organizze.R;
 import com.cursoandroid.organizze.activity.CadastroActivity;
 import com.cursoandroid.organizze.activity.LoginActivity;
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
