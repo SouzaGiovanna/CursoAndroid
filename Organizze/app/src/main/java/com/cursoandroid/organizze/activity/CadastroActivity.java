@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.cursoandroid.organizze.R;
 import com.cursoandroid.organizze.config.ConfiguracaoFirebase;
+import com.cursoandroid.organizze.helper.Base64Custom;
 import com.cursoandroid.organizze.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -43,8 +44,6 @@ public class CadastroActivity extends AppCompatActivity {
         edtEmail = findViewById(R.id.edtEmail);
         edtSenha = findViewById(R.id.edtSenha);
         btnCadastrar = findViewById(R.id.btnCadastrar);
-
-
 
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,9 +84,9 @@ public class CadastroActivity extends AppCompatActivity {
         return Toast.makeText(getApplicationContext(), "Preencha todos os campos para continuar", Toast.LENGTH_SHORT);
     }
 
-    public Toast msgCadastroSucesso(){
+    /*public Toast msgCadastroSucesso(){
         return Toast.makeText(getApplicationContext(), "Sucesso ao cadastrar usuário", Toast.LENGTH_SHORT);
-    }
+    }*/
 
     public Toast msgCadastroErro(String erro){
         return Toast.makeText(getApplicationContext(), erro, Toast.LENGTH_SHORT);
@@ -99,7 +98,13 @@ public class CadastroActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    msgCadastroSucesso().show();
+                    //msgCadastroSucesso().show();
+
+                    String idUsuario = Base64Custom.codificarBase64(usuario.getEmail());
+                    usuario.setIdUsuario(idUsuario);
+                    usuario.salvar();
+
+                    finish();
                 }
                 else{
                     msgCadastroErro(excessoes(task)).show();

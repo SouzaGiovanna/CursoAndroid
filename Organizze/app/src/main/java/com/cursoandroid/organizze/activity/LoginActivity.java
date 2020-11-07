@@ -3,6 +3,7 @@ package com.cursoandroid.organizze.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -79,7 +80,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    msgLoginSucesso().show();
+                    //msgLoginSucesso().show();
+
+                    abrirTelaPrincipal();
                 }
                 else{
                     msgLoginErro(excessoes(task)).show();
@@ -88,9 +91,9 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public Toast msgLoginSucesso(){
+    /*public Toast msgLoginSucesso(){
         return Toast.makeText(getApplicationContext(), "Sucesso ao logar usuário", Toast.LENGTH_SHORT);
-    }
+    }*/
 
     public Toast msgLoginErro(String erro){
         return Toast.makeText(getApplicationContext(), erro, Toast.LENGTH_SHORT);
@@ -109,5 +112,10 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         return excecao;
+    }
+
+    public void abrirTelaPrincipal(){
+        startActivity(new Intent(this, PrincipalActivity.class));
+        finish();
     }
 }

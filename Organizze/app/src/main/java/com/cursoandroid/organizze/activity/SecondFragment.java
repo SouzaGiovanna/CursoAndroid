@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.cursoandroid.organizze.R;
+
 public class SecondFragment extends Fragment {
 
     @Override
