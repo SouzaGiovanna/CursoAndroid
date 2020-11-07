@@ -64,8 +64,6 @@ public class Movimentacao {
         String idUsuario = Base64Custom.codificarBase64(autenticacao.getCurrentUser().getEmail());
         String mesAno = DateCustom.mesAnoData(data);
 
-        Log.i("TESTE", mesAno);
-
         firebase.child("movimentacao").child(idUsuario).child(mesAno).push().setValue(this);
     }
 }
