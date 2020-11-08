@@ -11,15 +11,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b04073e-9c43-4ee1-b45d-6acc03ebcd3c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Organizze/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Organizze/app/src/main/java/com/cursoandroid/organizze/adapter/Adapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Organizze/app/src/main/res/layout/adapter_movimentacao.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Organizze/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Organizze/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Organizze/app/src/main/java/com/cursoandroid/organizze/activity/DespesasActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Organizze/app/src/main/java/com/cursoandroid/organizze/activity/DespesasActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Organizze/app/src/main/java/com/cursoandroid/organizze/activity/PrincipalActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Organizze/app/src/main/java/com/cursoandroid/organizze/activity/PrincipalActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Organizze/app/src/main/java/com/cursoandroid/organizze/activity/ReceitasActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Organizze/app/src/main/java/com/cursoandroid/organizze/activity/ReceitasActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Organizze/app/src/main/res/layout/activity_principal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Organizze/app/src/main/res/layout/activity_principal.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Organizze/app/src/main/res/layout/content_principal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Organizze/app/src/main/res/layout/content_principal.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_26" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="RQ8MC02PHMX" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -59,7 +67,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Organizze" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.1056556854">

@@ -34,6 +34,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.navigation:navigation-fragment:2.3.1'
     implementation 'androidx.navigation:navigation-ui:2.3.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -43,6 +45,11 @@ dependencies {
     implementation 'com.heinrichreimersoftware:material-intro:2.0.0'
     implementation 'com.github.clans:fab:1.6.4'
     implementation 'com.prolificinteractive:material-calendarview:1.4.3'
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.16'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
 }
 
 apply plugin: 'com.google.gms.google-services'
