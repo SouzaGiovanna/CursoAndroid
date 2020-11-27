@@ -3,10 +3,18 @@ package com.cursoandroid.firebaseapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -16,20 +24,76 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.ByteArrayOutputStream;
+import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
     private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference("");
     private FirebaseAuth usuario = FirebaseAuth.getInstance();
+    private ImageView imgFoto;
+    private Button btnUpload;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        btnUpload = findViewById(R.id.btnUpload);
+        imgFoto = findViewById(R.id.imgFoto);
+
+        btnUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Configura para imagem ser salva em memória
+                imgFoto.setDrawingCacheEnabled(true);
+                imgFoto.buildDrawingCache();
+
+                //Recupera bitmap da imagem (imagem a ser carregada)
+                Bitmap bitmap = imgFoto.getDrawingCache();
+
+                //Comprimo bitmap para um formato png/jpg
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 75, baos);
+
+                //converte o baos para pixel brutos em uma matriz de bytes
+                //(dados da imagem)
+                byte[] dadosImagem = baos.toByteArray();
+
+                //Define nós para storage
+                StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+                StorageReference imagens = storageReference.child("imagens");
+
+                //Nome da imagem
+                String nomeArquivo = UUID.randomUUID().toString();
+                StorageReference imagemRef = imagens.child(nomeArquivo+ ".png");
+
+                //Retorna objeto que irá controlar o upload
+                UploadTask uploadTask = imagemRef.putBytes(dadosImagem);
+
+                uploadTask.addOnFailureListener(MainActivity.this, new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(MainActivity.this, "Upload da imagem falhou: " +e.getMessage().toString(), Toast.LENGTH_LONG).show();
+                    }
+                }).addOnSuccessListener(MainActivity.this, new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        //Uri url = taskSnapshot.getDownloadUrl();
+
+                        Toast.makeText(MainActivity.this, "Sucesso ao fazer upload", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        });
+
         //usuario.signOut();
 
-        /*usuario.signInWithEmailAndPassword("gi.souza03@gmail.com", "gi12345")
+        usuario.signInWithEmailAndPassword("gi.souza03@gmail.com", "gi12345")
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -55,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });*/
 
-        if(usuario.getCurrentUser() != null){
+        /*if(usuario.getCurrentUser() != null){
             Log.i("CurrentUser", "Usuario logado");
         }
         else{
@@ -65,16 +129,16 @@ public class MainActivity extends AppCompatActivity {
         //referencia.child("usuarios").child("003").child("nome").setValue("Kanade");
         //referencia.child("usuarios").child("003").child("sobrenome").setValue("Tachibana");
 
-        DatabaseReference usuarios = referencia.child("usuarios");
+        //DatabaseReference usuarios = referencia.child("usuarios");
         //DatabaseReference usuarioPesquisa = usuarios.child("-MLSQEboD4wpH-vvNbA0");
-        Query usuarioPesquisa = usuarios.orderByChild("nome").equalTo("Dimitri");
+        //Query usuarioPesquisa = usuarios.orderByChild("nome").equalTo("Dimitri");
         //Query usuarioPesquisa = usuarios.orderByKey().limitToFirst(2);
 
-        usuarioPesquisa.addValueEventListener(new ValueEventListener() {
+        /*usuarioPesquisa.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 /*Usuario dadosUsuario = dataSnapshot.getValue(Usuario.class);
-                Log.i("Dados usuario ", "nome: " +dadosUsuario.getNome());*/
+                Log.i("Dados usuario ", "nome: " +dadosUsuario.getNome());
                 Log.i("Dados usuario", dataSnapshot.getValue().toString());
             }
 
@@ -82,9 +146,11 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        });*/
 
-        Usuario usuario = new Usuario();
+
+
+        /*Usuario usuario = new Usuario();
         usuario.setNome("Dimitri");
         usuario.setSobrenome("Dioginis");
         usuario.setIdade(15);
