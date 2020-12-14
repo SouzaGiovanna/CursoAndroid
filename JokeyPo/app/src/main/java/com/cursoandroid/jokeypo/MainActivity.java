@@ -3,6 +3,7 @@ package com.cursoandroid.jokeypo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -97,5 +98,7 @@ public class MainActivity extends AppCompatActivity {
         else if(escolha == 2 && app == 1){
             result.setText(resultados.get(2));
         }
+
+        //Log.i("teste", "usuario: "+escolha);
     }
 }

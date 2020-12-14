@@ -68,6 +68,6 @@
         android:layout_marginRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtResultado"
-        app:srcCompat="@drawable/pedra" />
+        app:srcCompat="@drawable/tesoura" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
