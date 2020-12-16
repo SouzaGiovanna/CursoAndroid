@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    app:cardElevation="6dp"
+    app:cardMaxElevation="6dp"
+    tools:layout_editor_absoluteX="8dp"
+    tools:layout_editor_absoluteY="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/txtNomeUsuario"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Nome"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtDescPostagem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Descrição Postagem"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/imgPostagem"
+            app:layout_constraintStart_toStartOf="@+id/imgPostagem"
+            app:layout_constraintTop_toBottomOf="@+id/imgPostagem" />
+
+        <TextView
+            android:id="@+id/txtDataPostagem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Agora mesmo"
+            app:layout_constraintStart_toStartOf="@+id/txtNomeUsuario"
+            app:layout_constraintTop_toBottomOf="@+id/txtNomeUsuario" />
+
+        <ImageView
+            android:id="@+id/imgPostagem"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp"
+            android:cropToPadding="false"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="@+id/txtNomeUsuario"
+            app:layout_constraintStart_toStartOf="@+id/txtDataPostagem"
+            app:layout_constraintTop_toBottomOf="@+id/txtDataPostagem"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <Button
+            android:id="@+id/btnComentar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/background_light"
+            android:drawableLeft="@drawable/ic_baseline_chat_24"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="Comentar"
+            android:textColor="@color/colorButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnCurtir"
+            app:layout_constraintTop_toTopOf="@+id/btnCurtir" />
+
+        <Button
+            android:id="@+id/btnCurtir"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/background_light"
+            android:drawableLeft="@drawable/ic_baseline_favorite_24"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="Curtir"
+            android:textColor="@color/colorButton"
+            app:layout_constraintEnd_toStartOf="@+id/btnComentar"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtDescPostagem" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
