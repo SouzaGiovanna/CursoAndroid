@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 else{
                     txtPorcentagem.setText("0%");
                     txtGorjeta.setText("R$ 0,00");
+                    txtValorTotal.setText("R$ " +txtValorConta.getText());
                 }
             }
 
