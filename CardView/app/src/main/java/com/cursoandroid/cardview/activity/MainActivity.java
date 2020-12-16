@@ -1,6 +1,7 @@
 package com.cursoandroid.cardview.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
         prepararPostagens();
 
         //Define layout
+        //LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        //layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        //layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        //RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 3);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerPostagem.setLayoutManager(layoutManager);
 
