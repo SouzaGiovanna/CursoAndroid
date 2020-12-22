@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Fragments</string>
+    <string name="tab_text_1">Conversas</string>
+    <string name="tab_text_2">Contatos</string>
+</resources>
