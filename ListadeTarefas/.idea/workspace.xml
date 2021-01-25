@@ -11,83 +11,78 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b04073e-9c43-4ee1-b45d-6acc03ebcd3c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/androidTest/java/com/cursoandroid/mapassdk/ExampleInstrumentedTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/debug/res/values/google_maps_api.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/main/java/com/cursoandroid/mapassdk/MapsActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/main/res/layout/activity_maps.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/release/res/values/google_maps_api.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/app/src/test/java/com/cursoandroid/mapassdk/ExampleUnitTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MapasSDK/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/src/androidTest/java/com/cursoandroid/permissoes/ExampleInstrumentedTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/src/main/java/com/cursoandroid/permissoes/MainActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/app/src/test/java/com/cursoandroid/permissoes/ExampleUnitTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Permissoes/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Fragments/app/src/main/java/com/cursoandroid/fragments/fragment/ContatosFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Fragments/app/src/main/java/com/cursoandroid/fragments/fragment/ConversasFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Fragments/app/src/main/res/layout/fragment_contatos.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Fragments/app/src/main/res/layout/fragment_conversas.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/androidTest/java/com/cursoandroid/vivadecorafilmes/ExampleInstrumentedTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/java/com/cursoandroid/vivadecorafilmes/actvity/DetalhesActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/java/com/cursoandroid/vivadecorafilmes/actvity/MainActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/java/com/cursoandroid/vivadecorafilmes/adapter/AdapterFilmes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/java/com/cursoandroid/vivadecorafilmes/helper/Conexao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/java/com/cursoandroid/vivadecorafilmes/helper/RecyclerItemClickListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/java/com/cursoandroid/vivadecorafilmes/model/Filme.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/java/com/cursoandroid/vivadecorafilmes/model/Genero.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/java/com/cursoandroid/vivadecorafilmes/service/ServiceFilme.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/drawable/avaliacao_filme.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/drawable/background_item_promocional.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/drawable/captain_marvel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/drawable/gradient.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/drawable/gradient2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/drawable/ic_voltar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/drawable/testeapp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/layout/activity_detalhes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/layout/adapter_filmes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/layout/adapter_item_promocional.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/app/src/test/java/com/cursoandroid/vivadecorafilmes/ExampleUnitTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../VivaDecoraFilmes/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CaraouCoroa/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CaraouCoroa/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fragments/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Fragments/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fragments/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Fragments/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fragments/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Fragments/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fragments/app/src/main/java/com/cursoandroid/fragments/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Fragments/app/src/main/java/com/cursoandroid/fragments/activity/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fragments/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Fragments/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Fragments/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Fragments/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JokeyPo/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JokeyPo/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ListViewProjeto/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ListViewProjeto/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LocalizaoUsuario/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LocalizaoUsuario/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LocalizaoUsuario/app/src/main/java/com/cursoandroid/localizaousuario/MapsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LocalizaoUsuario/app/src/main/java/com/cursoandroid/localizaousuario/MapsActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +129,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/Wings_projects/Easychool_v5" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.1056556854">
@@ -224,55 +219,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="232" y="150" key="#Inspections" timestamp="1602783272176">
-      <screen x="0" y="0" width="1280" height="984" />
-    </state>
-    <state x="232" y="150" key="#Inspections/0.0.1280.984/-1366.156.1366.728@0.0.1280.984" timestamp="1602783272176" />
-    <state x="445" y="176" key="#com.intellij.ide.util.MemberChooser" timestamp="1602772521634">
-      <screen x="0" y="0" width="1280" height="984" />
-    </state>
-    <state x="445" y="176" key="#com.intellij.ide.util.MemberChooser/0.0.1280.984/-1366.156.1366.728@0.0.1280.984" timestamp="1602772521634" />
-    <state x="260" y="417" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1602773162825">
-      <screen x="0" y="0" width="1280" height="984" />
-    </state>
-    <state x="260" y="417" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1280.984/-1366.156.1366.728@0.0.1280.984" timestamp="1602773162825" />
-    <state x="406" y="351" width="468" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1602773136883">
-      <screen x="0" y="0" width="1280" height="984" />
-    </state>
-    <state x="406" y="351" width="468" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.984/-1366.156.1366.728@0.0.1280.984" timestamp="1602773136883" />
-    <state x="436" y="372" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1602773164421">
-      <screen x="0" y="0" width="1280" height="984" />
-    </state>
-    <state x="436" y="372" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1280.984/-1366.156.1366.728@0.0.1280.984" timestamp="1602773164421" />
-    <state x="370" y="239" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602696081667">
-      <screen x="0" y="0" width="1280" height="984" />
-    </state>
-    <state x="370" y="239" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.984/-1366.156.1366.728@0.0.1280.984" timestamp="1602696081667" />
-    <state x="220" y="247" key="AndroidCreateResourceFileDialog" timestamp="1602770461064">
-      <screen x="0" y="0" width="1280" height="984" />
-    </state>
-    <state x="220" y="247" key="AndroidCreateResourceFileDialog/0.0.1280.984/-1366.156.1366.728@0.0.1280.984" timestamp="1602770461064" />
-    <state x="-918" y="339" key="FileChooserDialogImpl" timestamp="1604754720921">
+    <state x="-918" y="339" key="FileChooserDialogImpl" timestamp="1611431953755">
       <screen x="-1366" y="156" width="1366" height="728" />
     </state>
-    <state x="-918" y="339" key="FileChooserDialogImpl/0.0.1280.984/-1366.156.1366.728@-1366.156.1366.728" timestamp="1604754720921" />
-    <state x="420" y="247" key="FileChooserDialogImpl/0.0.1280.984/-1366.156.1366.728@0.0.1280.984" timestamp="1602785725028" />
+    <state x="-918" y="339" key="FileChooserDialogImpl/0.0.1280.984/-1366.156.1366.728@-1366.156.1366.728" timestamp="1611431953755" />
     <state x="420" y="247" key="FileChooserDialogImpl/0.0.1280.984@0.0.1280.984" timestamp="1603641085657" />
-    <state width="1237" height="614" key="GridCell.Tab.0.bottom" timestamp="1602791554545">
-      <screen x="0" y="0" width="1280" height="984" />
-    </state>
-    <state width="1237" height="614" key="GridCell.Tab.0.bottom/0.0.1280.984/-1366.156.1366.728@0.0.1280.984" timestamp="1602791554545" />
-    <state width="1237" height="614" key="GridCell.Tab.0.center" timestamp="1602791554544">
-      <screen x="0" y="0" width="1280" height="984" />
-    </state>
-    <state width="1237" height="614" key="GridCell.Tab.0.center/0.0.1280.984/-1366.156.1366.728@0.0.1280.984" timestamp="1602791554544" />
-    <state width="1237" height="614" key="GridCell.Tab.0.left" timestamp="1602791554544">
-      <screen x="0" y="0" width="1280" height="984" />
-    </state>
-    <state width="1237" height="614" key="GridCell.Tab.0.left/0.0.1280.984/-1366.156.1366.728@0.0.1280.984" timestamp="1602791554544" />
-    <state width="1237" height="614" key="GridCell.Tab.0.right" timestamp="1602791554545">
-      <screen x="0" y="0" width="1280" height="984" />
-    </state>
-    <state width="1237" height="614" key="GridCell.Tab.0.right/0.0.1280.984/-1366.156.1366.728@0.0.1280.984" timestamp="1602791554545" />
   </component>
 </project>

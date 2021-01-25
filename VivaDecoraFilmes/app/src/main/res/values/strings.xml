@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Viva Decora <font color="#FF5757">Filmes</font></string>
+    <string name="conferir">Confira os Filmes</string>
+    <string name="item_promocional">Confira todos os filmes dos estúdios Marvel</string>
+    <string name="item_promocional_confirmar">CONFERIR</string>
+    <string name="voltar">Voltar</string>
+    <string name="sinopse">Sinopse</string>
+    <string name="mais_filmes">Carregar mais filmes</string>
+</resources>
