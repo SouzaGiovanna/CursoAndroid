@@ -7,12 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,57 +27,41 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class FilmesAnuncioActivity extends AppCompatActivity {
     private RecyclerView recyclerFilmes;
-    private List<Filme> filmes;
     private Filme filmeSelecionado;
-    private AdapterFilmes adapter = new AdapterFilmes();
-    private int anuncio = adapter.getAnuncio(), page = 1;
-    private TextView maisFilmes, semConexaoText, textView;
-    private ProgressBar progressBar;
+    private List<Filme> filmes = new ArrayList<>();
     private ImageView semConexao;
-    private ConstraintLayout container;
+    private TextView semConexaoText, textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_filmes_anuncio);
 
-        recyclerFilmes = findViewById(R.id.filmes);
-        maisFilmes = findViewById(R.id.maisFilmes);
-        progressBar = findViewById(R.id.progressBarMaisFilmes);
+        getSupportActionBar().hide();
+
+        recyclerFilmes = findViewById(R.id.recyclerFilmes);
+        textView = findViewById(R.id.textView);
         semConexao = findViewById(R.id.semConexao);
         semConexaoText = findViewById(R.id.semConexaoText);
-        textView = findViewById(R.id.textView);
-        container = findViewById(R.id.container);
 
-        progressBar.setVisibility(View.INVISIBLE);
-        semConexao.setVisibility(View.GONE);
-        semConexaoText.setVisibility(View.GONE);
-
-        filmes = new ArrayList<>();
-
-        getSupportActionBar().setElevation(0);
+        semConexao.setVisibility(View.INVISIBLE);
+        semConexaoText.setVisibility(View.INVISIBLE);
 
         if(Conectividade.Conectividade(this)) {
-
-            Tarefa tarefa = new Tarefa();
-            tarefa.execute("https://api.themoviedb.org/3/discover/movie?api_key=a9b4aa2bd7b0cdc0e0d9a9d837537d22&language=pt-BR");
+            FilmesAnuncioActivity.Tarefa tarefa = new FilmesAnuncioActivity.Tarefa();
+            tarefa.execute("https://api.themoviedb.org/3/search/movie?query=marvel&api_key=a9b4aa2bd7b0cdc0e0d9a9d837537d22&language=pt-BR");
 
             recyclerFilmes.addOnItemTouchListener(
                     new RecyclerItemClickListener(getApplicationContext(), recyclerFilmes, new RecyclerItemClickListener.OnItemClickListener() {
                         @Override
                         public void onItemClick(View view, int position) {
-                            if (position % anuncio == 0 && position != 0) {
-                                startActivity(new Intent(getApplicationContext(), FilmesAnuncioActivity.class));
-                            } else {
-                                filmeSelecionado = filmes.get(position);
+                            filmeSelecionado = filmes.get(position);
 
-                                Intent intent = new Intent(getApplicationContext(), DetalhesActivity.class);
-                                intent.putExtra("filmeSelecionado", filmeSelecionado);
-
-                                startActivity(intent);
-                            }
+                            Intent intent = new Intent(getApplicationContext(), DetalhesActivity.class);
+                            intent.putExtra("filmeSelecionado", filmeSelecionado);
+                            startActivity(intent);
                         }
 
                         @Override
@@ -96,15 +78,13 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             recyclerFilmes.setVisibility(View.INVISIBLE);
-            maisFilmes.setVisibility(View.INVISIBLE);
-            progressBar.setVisibility(View.INVISIBLE);
             textView.setVisibility(View.INVISIBLE);
             semConexao.setVisibility(View.VISIBLE);
             semConexaoText.setVisibility(View.VISIBLE);
         }
     }
 
-    private class Tarefa extends AsyncTask<String, String, String>{
+    private class Tarefa extends AsyncTask<String, String, String> {
 
         @Override
         protected String doInBackground(String... strings) {
@@ -129,24 +109,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void iniciarRecycler(){
-        page+=1;
-
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
         recyclerFilmes.setLayoutManager(layoutManager);
-        recyclerFilmes.setHasFixedSize(true);
+        recyclerFilmes.setHasFixedSize(false);
 
-        adapter = new AdapterFilmes(filmes, true);
+        AdapterFilmes adapter = new AdapterFilmes(filmes, false);
         recyclerFilmes.setAdapter(adapter);
     }
 
-    public void carregarMaisFilmes(View view){
-        progressBar.setVisibility(View.VISIBLE);
-        maisFilmes.setVisibility(View.INVISIBLE);
-
-        Tarefa tarefa = new Tarefa();
-        tarefa.execute("https://api.themoviedb.org/3/discover/movie?api_key=a9b4aa2bd7b0cdc0e0d9a9d837537d22&language=pt-BR&page="+page);
-
-        progressBar.setVisibility(View.INVISIBLE);
-        maisFilmes.setVisibility(View.VISIBLE);
+    public void voltar(View view){
+        finish();
     }
 }

@@ -21,15 +21,46 @@ import java.util.List;
 
 public class AdapterFilmes extends RecyclerView.Adapter<AdapterFilmes.MyViewHolder>{
     private List<Filme> filmes;
+    private Boolean mostrarAnuncio;
+    private static final int anuncio = 4;
+    private static final int ITEMTYPEFILME = 0;
+    private static final int ITEMTYPEANUNCIO = 1;
+    private int contador = 0;
 
-    public AdapterFilmes(List<Filme> filmes) {
+    public AdapterFilmes() {
+    }
+
+    public AdapterFilmes(List<Filme> filmes, Boolean mostrarAnuncio) {
         this.filmes = filmes;
+        this.mostrarAnuncio = mostrarAnuncio;
+    }
+
+    public int getAnuncio(){
+        return anuncio;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemLista = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_filmes, parent, false);
+        View itemLista = null;
+
+        if(mostrarAnuncio) {
+            if (contador % anuncio == 0 && contador != 0) {
+                viewType = 1;
+            }
+        }
+
+        switch (viewType){
+            case ITEMTYPEFILME:
+                itemLista = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_filmes, parent, false);
+                break;
+            case ITEMTYPEANUNCIO:
+                itemLista = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_item_promocional, parent, false);
+                break;
+        }
+
+        contador++;
+
         return new MyViewHolder(itemLista);
     }
 
@@ -42,19 +73,36 @@ public class AdapterFilmes extends RecyclerView.Adapter<AdapterFilmes.MyViewHold
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Filme filme = filmes.get(position);
+        if(mostrarAnuncio) {
+            if (position % anuncio != 0 || position == 0) {
+                Filme filme = filmes.get(position);
 
-        holder.nome.setText(filme.getTitle());
-        holder.avaliacao.setText(filme.getVoteAverage().toString());
+                holder.nome.setText(filme.getTitle());
+                holder.avaliacao.setText(filme.getVoteAverage().toString());
 
-        if(filme.getRelaceDate().length() != 0){
-            holder.ano.setText(filme.getRelaceDate().substring(0, 4));
+                if (filme.getRelaceDate().length() != 0) {
+                    holder.ano.setText(filme.getRelaceDate().substring(0, 4));
+                } else {
+                    holder.ano.setText("Não Informado");
+                }
+
+                recuperarImagens(holder.foto, holder.progressBar, filme.getPosterPath());
+            }
         }
         else{
-            holder.ano.setText("Não Informado");
-        }
+            Filme filme = filmes.get(position);
 
-        recuperarImagens(holder.foto, holder.progressBar, filme.getPosterPath());
+            holder.nome.setText(filme.getTitle());
+            holder.avaliacao.setText(filme.getVoteAverage().toString());
+
+            if (filme.getRelaceDate().length() != 0) {
+                holder.ano.setText(filme.getRelaceDate().substring(0, 4));
+            } else {
+                holder.ano.setText("Não Informado");
+            }
+
+            recuperarImagens(holder.foto, holder.progressBar, filme.getPosterPath());
+        }
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -66,6 +114,7 @@ public class AdapterFilmes extends RecyclerView.Adapter<AdapterFilmes.MyViewHold
         public MyViewHolder(View itemView) {
             super(itemView);
 
+            //Filme 1
             nome = itemView.findViewById(R.id.nomeFilme);
             ano = itemView.findViewById(R.id.anoPublicacao);
             avaliacao = itemView.findViewById(R.id.avaliacaoFilme);

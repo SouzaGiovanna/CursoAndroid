@@ -4,13 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/background_item_promocional">
+    android:layout_marginBottom="24dp"
+    android:background="@drawable/background_item_promocional"
+    app:layout_constraintCircleRadius="100dp">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="206dp"
         android:layout_height="187dp"
-        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:background="@drawable/background_item_promocional"
+        android:cropToPadding="true"
+        android:scaleType="fitXY"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -39,18 +44,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/item_promocional_confirmar"
         android:textColor="@color/colorAccent"
-        android:textSize="14sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="@+id/textView2"

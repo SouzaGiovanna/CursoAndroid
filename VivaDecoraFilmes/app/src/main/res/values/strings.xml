@@ -6,4 +6,7 @@
     <string name="voltar">Voltar</string>
     <string name="sinopse">Sinopse</string>
     <string name="mais_filmes">Carregar mais filmes</string>
+    <string name="filmes_anuncio_title">Confira todos os filmes dos estúdios Marvel</string>
+    <string name="sem_conexao">Conecte-se a Internet para utilizar o aplicativo</string>
+    <string name="carregando">Carregando</string>
 </resources>
