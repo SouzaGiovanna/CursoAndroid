@@ -43,21 +43,22 @@ public class AdapterFilmes extends RecyclerView.Adapter<AdapterFilmes.MyViewHold
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemLista = null;
+        //viewType = ITEMTYPEFILME;
 
-        if(mostrarAnuncio) {
+        /*if(mostrarAnuncio) {
             if (contador % anuncio == 0 && contador != 0) {
-                viewType = 1;
+                viewType = ITEMTYPEANUNCIO;
             }
-        }
+        }*/
 
-        switch (viewType){
-            case ITEMTYPEFILME:
+        /*switch (viewType){
+            case ITEMTYPEFILME:*/
                 itemLista = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_filmes, parent, false);
-                break;
+                /*break;
             case ITEMTYPEANUNCIO:
                 itemLista = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_item_promocional, parent, false);
                 break;
-        }
+        }*/
 
         contador++;
 
@@ -75,18 +76,22 @@ public class AdapterFilmes extends RecyclerView.Adapter<AdapterFilmes.MyViewHold
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         if(mostrarAnuncio) {
             if (position % anuncio != 0 || position == 0) {
-                Filme filme = filmes.get(position);
+                try{
+                    Filme filme = filmes.get(position);
 
-                holder.nome.setText(filme.getTitle());
-                holder.avaliacao.setText(filme.getVoteAverage().toString());
+                    holder.nome.setText(filme.getTitle());
+                    holder.avaliacao.setText(filme.getVoteAverage().toString());
 
-                if (filme.getRelaceDate().length() != 0) {
-                    holder.ano.setText(filme.getRelaceDate().substring(0, 4));
-                } else {
-                    holder.ano.setText("Não Informado");
+                    if (filme.getRelaceDate().length() != 0) {
+                        holder.ano.setText(filme.getRelaceDate().substring(0, 4));
+                    } else {
+                        holder.ano.setText("Não Informado");
+                    }
+
+                    recuperarImagens(holder.foto, holder.progressBar, filme.getPosterPath());
+                }catch (Exception e){
+                    e.printStackTrace();
                 }
-
-                recuperarImagens(holder.foto, holder.progressBar, filme.getPosterPath());
             }
         }
         else{
@@ -114,7 +119,6 @@ public class AdapterFilmes extends RecyclerView.Adapter<AdapterFilmes.MyViewHold
         public MyViewHolder(View itemView) {
             super(itemView);
 
-            //Filme 1
             nome = itemView.findViewById(R.id.nomeFilme);
             ano = itemView.findViewById(R.id.anoPublicacao);
             avaliacao = itemView.findViewById(R.id.avaliacaoFilme);

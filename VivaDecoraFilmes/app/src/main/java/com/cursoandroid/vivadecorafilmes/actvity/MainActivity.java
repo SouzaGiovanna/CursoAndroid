@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView maisFilmes, semConexaoText, textView;
     private ProgressBar progressBar;
     private ImageView semConexao;
-    private ConstraintLayout container;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         semConexao = findViewById(R.id.semConexao);
         semConexaoText = findViewById(R.id.semConexaoText);
         textView = findViewById(R.id.textView);
-        container = findViewById(R.id.container);
 
         progressBar.setVisibility(View.INVISIBLE);
         semConexao.setVisibility(View.GONE);
@@ -131,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
     private void iniciarRecycler(){
         page+=1;
 
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 1);
         recyclerFilmes.setLayoutManager(layoutManager);
         recyclerFilmes.setHasFixedSize(true);
 
