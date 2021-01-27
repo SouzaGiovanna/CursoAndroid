@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3ecbd99f-b5a1-41dc-a79f-b4a99ce84af7" name="Default Changelist" comment="" />
+    <list default="true" id="fd6013b2-cb6d-4406-a833-53d0707ec315" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fragments/app/src/main/java/com/cursoandroid/fragments/activity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fragments/app/src/main/java/com/cursoandroid/fragments/activity/MainActivity.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,28 +19,36 @@
       </state>
     </system>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1neqUNZo1opXliPEAvggE6nci52" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fd6013b2-cb6d-4406-a833-53d0707ec315" name="Default Changelist" comment="" />
+      <created>1611760918940</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1611760918940</updated>
+    </task>
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="94" y="147" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603136635240">
+    <state x="423" y="195" key="FileChooserDialogImpl" timestamp="1611761340367">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state x="94" y="147" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.984/-1366.156.1366.728@0.0.1280.984" timestamp="1603136635240" />
-    <state x="410" y="151" key="FileChooserDialogImpl" timestamp="1603136750686">
-      <screen x="0" y="0" width="1280" height="984" />
-    </state>
-    <state x="410" y="151" key="FileChooserDialogImpl/0.0.1280.984/-1366.156.1366.728@0.0.1280.984" timestamp="1603136750686" />
+    <state x="423" y="195" key="FileChooserDialogImpl/0.0.1280.984/-1366.156.1366.728@0.0.1280.984" timestamp="1611761340367" />
   </component>
 </project>

@@ -1,6 +1,7 @@
 package com.cursoandroid.fragments.activity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,10 +25,29 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setElevation(0);
 
         conversasFragment = new ConversasFragment();
+        contatosFragment = new ContatosFragment();
 
         //Configurar objeto para o Fragmento
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.frameConteudo, conversasFragment);
+        transaction.replace(R.id.frameConteudo, conversasFragment);
         transaction.commit();
+
+        btnContato.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frameConteudo, contatosFragment);
+                transaction.commit();
+            }
+        });
+
+        btnConversa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frameConteudo, conversasFragment);
+                transaction.commit();
+            }
+        });
     }
 }
