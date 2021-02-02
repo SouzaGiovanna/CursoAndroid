@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.cursoandroid.atmconsultoria.ui.principal.PrincipalFragment"
+        android:label="@string/menu_principal"
+        tools:layout="@layout/fragment_principal" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.cursoandroid.atmconsultoria.ui.servicos.ServicosFragment"
+        android:label="@string/menu_servicos"
+        tools:layout="@layout/fragment_servicos" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.cursoandroid.atmconsultoria.ui.contatos.ContatosFragment"
+        android:label="@string/menu_contatos"
+        tools:layout="@layout/fragment_contatos" />
+</navigation>
