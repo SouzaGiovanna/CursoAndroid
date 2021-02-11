@@ -1,5 +1,6 @@
 package com.cursoandroid.atmconsultoria;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                enviarEmail();
             }
         });
 
@@ -54,5 +55,17 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void enviarEmail(){
+        Intent intent = new Intent(Intent.ACTION_SEND);
+
+        intent.putExtra(Intent.EXTRA_EMAIL, "atendimento@atmconsultoria.com.br");
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Contato pelo App");
+        intent.putExtra(Intent.EXTRA_TEXT, "TESTEEEEE");
+
+        intent.setType("message/rfc822");//type pra mostrar os app's que podem mandar email
+
+        startActivity(Intent.createChooser(intent, "Mandar Email"));
     }
 }
