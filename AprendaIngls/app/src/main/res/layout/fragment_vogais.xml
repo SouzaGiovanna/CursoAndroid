@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.VogaisFragment">
+
+    <ImageView
+        android:id="@+id/btnU"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/dog"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnO"
+        app:layout_constraintStart_toStartOf="@+id/btnI"
+        app:layout_constraintTop_toBottomOf="@+id/btnI"
+        app:srcCompat="@drawable/u_removebg_preview" />
+
+    <ImageView
+        android:id="@+id/btnO"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/cat"
+        app:layout_constraintBottom_toBottomOf="@+id/btnI"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnI"
+        app:layout_constraintTop_toTopOf="@+id/btnI"
+        app:srcCompat="@drawable/o_removebg_preview" />
+
+    <ImageView
+        android:id="@+id/btnI"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/dog"
+        app:layout_constraintBottom_toTopOf="@+id/btnU"
+        app:layout_constraintEnd_toStartOf="@+id/btnO"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnA"
+        app:srcCompat="@drawable/i_removebg_preview" />
+
+    <ImageView
+        android:id="@+id/btnA"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/dog"
+        app:layout_constraintBottom_toTopOf="@+id/btnI"
+        app:layout_constraintEnd_toStartOf="@+id/btnE"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/a_removebg_preview" />
+
+    <ImageView
+        android:id="@+id/btnE"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/cat"
+        app:layout_constraintBottom_toBottomOf="@+id/btnA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnA"
+        app:layout_constraintTop_toTopOf="@+id/btnA"
+        app:srcCompat="@drawable/e_removebg_preview" />
+</androidx.constraintlayout.widget.ConstraintLayout>
