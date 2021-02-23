@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -70,10 +72,24 @@ public class MainActivity extends AppCompatActivity {
 
                 //Nome da imagem
                 String nomeArquivo = UUID.randomUUID().toString();
-                StorageReference imagemRef = imagens.child(nomeArquivo+ ".png");
+                StorageReference imagemRef = imagens.child("65c9ae24-f981-46ad-918d-a47b7f078365.png");
+
+                Glide.with(MainActivity.this).load(imagemRef).into(imgFoto);
+
+                /*imagemRef.delete().addOnFailureListener(MainActivity.this, new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(MainActivity.this, "Erro ao deletar", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnSuccessListener(MainActivity.this, new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(MainActivity.this, "Sucesso ao deletar", Toast.LENGTH_SHORT).show();
+                    }
+                });*/
 
                 //Retorna objeto que irá controlar o upload
-                UploadTask uploadTask = imagemRef.putBytes(dadosImagem);
+                /*UploadTask uploadTask = imagemRef.putBytes(dadosImagem);
 
                 uploadTask.addOnFailureListener(MainActivity.this, new OnFailureListener() {
                     @Override
@@ -87,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
                         Toast.makeText(MainActivity.this, "Sucesso ao fazer upload", Toast.LENGTH_LONG).show();
                     }
-                });
+                });*/
             }
         });
 
