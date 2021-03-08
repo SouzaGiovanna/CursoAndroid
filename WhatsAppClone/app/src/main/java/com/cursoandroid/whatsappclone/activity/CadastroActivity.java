@@ -9,9 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.cursoandroid.whatsappclone.Base64Custom;
+import com.cursoandroid.whatsappclone.helper.Base64Custom;
 import com.cursoandroid.whatsappclone.R;
 import com.cursoandroid.whatsappclone.config.ConfigFirebase;
+import com.cursoandroid.whatsappclone.helper.UsuarioFirebase;
 import com.cursoandroid.whatsappclone.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -20,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.auth.FirebaseUser;
 
 public class CadastroActivity extends AppCompatActivity {
     private EditText edtNome, edtEmail, edtSenha;
@@ -81,6 +83,11 @@ public class CadastroActivity extends AppCompatActivity {
                     String id = Base64Custom.codificarBase64(usuario.getEmail());
                     usuario.setId(id);
                     usuario.salvar();
+
+                    FirebaseUser user = autenticacao.getCurrentUser();
+                    user.sendEmailVerification();
+
+                    UsuarioFirebase.atualizarNomeUsuario(usuario.getNome());
 
                     finish();
                 }

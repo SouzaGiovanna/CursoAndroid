@@ -4,9 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -19,13 +21,15 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText edtEmail, edtSenha;
     private String email, senha;
     private Button btnLogar;
-    private FirebaseAuth autenticacao;
+    private FirebaseAuth autenticacao = ConfigFirebase.getFirebaseAutenticacao();;
     private Usuario usuario;
+    private CheckBox cbManterConectado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         edtEmail = findViewById(R.id.txtEmail);
         edtSenha = findViewById(R.id.txtSenha);
         btnLogar = findViewById(R.id.btnLogar);
+        cbManterConectado = findViewById(R.id.cbManterConectado);
 
         btnLogar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +47,19 @@ public class LoginActivity extends AppCompatActivity {
                 setarStrings();
             }
         });
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseUser usuarioAtual = autenticacao.getCurrentUser();
+        if(usuarioAtual != null){
+            //Abrir a tela principal
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        }
     }
 
     public void abrirTelaCadastro(View view){
@@ -73,12 +91,16 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void validarLogin(){
-        autenticacao = ConfigFirebase.getFirebaseAutenticacao();
         autenticacao.signInWithEmailAndPassword(usuario.getEmail(), usuario.getSenha()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     //Abre a tela principal do app
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+
+                    intent.putExtra("manterConectado", cbManterConectado.isChecked());
+
+                    startActivity(intent);
                 }
                 else{
                     msgLoginErro(excessoes(task)).show();

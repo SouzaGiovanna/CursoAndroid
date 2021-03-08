@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.22000003"
+        app:layout_constraintVertical_bias="0.15"
         app:srcCompat="@drawable/logo" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -51,7 +51,10 @@
         android:layout_marginRight="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textEmail">
+        app:layout_constraintTop_toBottomOf="@+id/textEmail"
+        app:passwordToggleDrawable="@drawable/ic_eye"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/colorAccent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtSenha"
@@ -73,7 +76,7 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/textSenha"
         app:layout_constraintStart_toStartOf="@+id/textSenha"
-        app:layout_constraintTop_toBottomOf="@+id/textSenha" />
+        app:layout_constraintTop_toBottomOf="@+id/cbManterConectado" />
 
     <TextView
         android:id="@+id/semConta"
@@ -87,4 +90,16 @@
         app:layout_constraintEnd_toEndOf="@+id/btnLogar"
         app:layout_constraintStart_toStartOf="@+id/btnLogar"
         app:layout_constraintTop_toBottomOf="@+id/btnLogar" />
+
+    <CheckBox
+        android:id="@+id/cbManterConectado"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/manter_conectado"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textSenha"
+        app:layout_constraintStart_toStartOf="@+id/textSenha"
+        app:layout_constraintTop_toBottomOf="@+id/textSenha" />
 </androidx.constraintlayout.widget.ConstraintLayout>

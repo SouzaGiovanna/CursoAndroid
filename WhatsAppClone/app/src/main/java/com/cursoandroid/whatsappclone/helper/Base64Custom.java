@@ -1,4 +1,4 @@
-package com.cursoandroid.whatsappclone;
+package com.cursoandroid.whatsappclone.helper;
 
 import android.util.Base64;
 

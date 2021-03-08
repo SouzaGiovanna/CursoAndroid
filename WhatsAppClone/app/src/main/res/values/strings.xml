@@ -6,4 +6,11 @@
     <string name="logar">LOGAR</string>
     <string name="sem_conta">Não possui uma conta? Cadastre-se</string>
     <string name="cadastrar">CADASTRAR</string>
+    <string name="manter_conectado">Manter Conectado</string>
+    <string name="pesquisa">Pesquisar</string>
+    <string name="configuracao">Configurações</string>
+    <string name="sair">Sair</string>
+    <string name="info_nome_user">Esse não é o seu nome de usuário nem sua senha. Esse nome ficará visível para todos os seus contatos do WhatsApp Clone</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
