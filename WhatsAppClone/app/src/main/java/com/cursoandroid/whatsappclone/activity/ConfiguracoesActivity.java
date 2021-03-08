@@ -272,7 +272,7 @@ public class ConfiguracoesActivity extends AppCompatActivity {
 
     private void atualizaFotoUsuario(Uri url) {
         UsuarioFirebase.atualizarFotoUsuario(url);
-        
+
         usuario.setFoto(url.toString());
         usuario.atualizar();
     }

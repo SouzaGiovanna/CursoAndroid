@@ -11,6 +11,9 @@
     <string name="configuracao">Configurações</string>
     <string name="sair">Sair</string>
     <string name="info_nome_user">Esse não é o seu nome de usuário nem sua senha. Esse nome ficará visível para todos os seus contatos do WhatsApp Clone</string>
+    <string name="nome_usuarios">Nome Usuário</string>
+    <string name="email_usuarios">Email Usuário</string>
+    <string name="new_group">Novo grupo</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
