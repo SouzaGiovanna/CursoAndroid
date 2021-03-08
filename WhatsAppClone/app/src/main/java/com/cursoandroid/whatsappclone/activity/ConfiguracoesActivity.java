@@ -22,7 +22,6 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.cursoandroid.whatsappclone.R;
 import com.cursoandroid.whatsappclone.config.ConfigFirebase;
-import com.cursoandroid.whatsappclone.helper.Base64Custom;
 import com.cursoandroid.whatsappclone.helper.Permissoes;
 import com.cursoandroid.whatsappclone.helper.UsuarioFirebase;
 import com.cursoandroid.whatsappclone.model.Usuario;
@@ -30,7 +29,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -74,8 +72,8 @@ public class ConfiguracoesActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        usuario = new Usuario();
-        imgPerfil = findViewById(R.id.img_perfil);
+        usuario = UsuarioFirebase.getDadosUsuarioLogado();
+        imgPerfil = findViewById(R.id.imgPerfilUser);
         edtNome = findViewById(R.id.edtNome);
 
         usuarioRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -274,11 +272,16 @@ public class ConfiguracoesActivity extends AppCompatActivity {
 
     private void atualizaFotoUsuario(Uri url) {
         UsuarioFirebase.atualizarFotoUsuario(url);
+        
+        usuario.setFoto(url.toString());
+        usuario.atualizar();
     }
 
     public void atualizarNome(View view){
         String nome = edtNome.getText().toString();
         if(!nome.isEmpty()){
+            usuario.setNome(nome);
+
             UsuarioFirebase.atualizarNomeUsuario(nome);
             usuarioRef.child("nome").setValue(nome);
         }
