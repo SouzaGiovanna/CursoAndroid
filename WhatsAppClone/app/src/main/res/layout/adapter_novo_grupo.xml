@@ -14,7 +14,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/img_new_group"
-        android:scaleType="centerInside"
+        android:scaleType="center"
         android:src="@drawable/ic_baseline_group_add_24"
         app:civ_border_color="#ffffff"
         app:civ_border_width="0dp"

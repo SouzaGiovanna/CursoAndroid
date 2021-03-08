@@ -70,12 +70,12 @@ public class AdapterContatos extends RecyclerView.Adapter<AdapterContatos.MyView
 
     @Override
     public int getItemViewType(int position) {
-        if(position == 0){
+        /*if(position == 0){
             return GRUPO;
         }
-        else{
+        else{*/
             return CONTATOS;
-        }
+        //}
     }
 
     @Override
