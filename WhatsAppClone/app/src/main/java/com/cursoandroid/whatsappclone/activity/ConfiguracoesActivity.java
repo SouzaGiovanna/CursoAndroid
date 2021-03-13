@@ -97,24 +97,23 @@ public class ConfiguracoesActivity extends AppCompatActivity {
 
         //Recuperando dados do Usuário
         FirebaseUser usuario = UsuarioFirebase.getUsuarioAtual();
-        imagemRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Glide.with(ConfiguracoesActivity.this).load(uri).into(imgPerfil);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                imgPerfil.setImageResource(R.drawable.profile);
-            }
-        });
+        Uri url = usuario.getPhotoUrl();
 
         edtNome.setText(usuario.getDisplayName());
+
+        Log.i("teste", usuario.getPhotoUrl().toString());
+
+        if (url != null) {
+            Glide.with(getApplicationContext()).load(url).into(imgPerfil);
+        }
+        else{
+            imgPerfil.setImageResource(R.drawable.profile);
+        }
     }
 
     @Override
     public void onBackPressed() {
-        salvarImgBanco();
+        //salvarImgBanco();
 
         super.onBackPressed();
     }

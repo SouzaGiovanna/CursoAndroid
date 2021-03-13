@@ -14,7 +14,9 @@ import android.view.ViewGroup;
 import com.cursoandroid.whatsappclone.R;
 import com.cursoandroid.whatsappclone.adapter.AdapterContatos;
 import com.cursoandroid.whatsappclone.config.ConfigFirebase;
+import com.cursoandroid.whatsappclone.helper.UsuarioFirebase;
 import com.cursoandroid.whatsappclone.model.Usuario;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,11 +26,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContatosFragment extends Fragment {
-    private List<Usuario> listUsuarios = new ArrayList<>();
+    private List<Usuario> listUsuarios;
     private RecyclerView recyclerContatos;
     private DatabaseReference usuariosRef;
     private AdapterContatos adapter;
     private ValueEventListener valueEventListenerContatos;
+    private static FirebaseUser usuarioAtual;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,13 +39,6 @@ public class ContatosFragment extends Fragment {
 
         recyclerContatos = root.findViewById(R.id.recyclerContatos);
         usuariosRef = ConfigFirebase.getFirebaseDatabse().child("usuarios");
-
-        adapter = new AdapterContatos(listUsuarios, getActivity());
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        recyclerContatos.setLayoutManager(layoutManager);
-        recyclerContatos.setHasFixedSize(true);
-        recyclerContatos.setAdapter(adapter);
 
         recuperarContatos();
 
@@ -56,12 +52,18 @@ public class ContatosFragment extends Fragment {
     }
 
     public void recuperarContatos(){
+        listUsuarios = new ArrayList<>();
+        usuarioAtual = UsuarioFirebase.getUsuarioAtual();
+
         valueEventListenerContatos = usuariosRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dados : snapshot.getChildren()){
                     Usuario usuario = dados.getValue(Usuario.class);
-                    listUsuarios.add(usuario);
+
+                    if(!usuarioAtual.getEmail().equals(usuario.getEmail())) {
+                        listUsuarios.add(usuario);
+                    }
                 }
 
                 adapter.notifyDataSetChanged();
@@ -72,5 +74,16 @@ public class ContatosFragment extends Fragment {
 
             }
         });
+
+        configurarRecyclerView();
+    }
+
+    private void configurarRecyclerView(){
+        adapter = new AdapterContatos(listUsuarios, getActivity());
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerContatos.setLayoutManager(layoutManager);
+        recyclerContatos.setHasFixedSize(true);
+        recyclerContatos.setAdapter(adapter);
     }
 }
