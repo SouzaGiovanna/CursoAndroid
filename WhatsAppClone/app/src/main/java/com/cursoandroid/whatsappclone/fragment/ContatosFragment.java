@@ -1,5 +1,6 @@
 package com.cursoandroid.whatsappclone.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,10 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.cursoandroid.whatsappclone.R;
+import com.cursoandroid.whatsappclone.activity.ChatActivity;
 import com.cursoandroid.whatsappclone.adapter.AdapterContatos;
 import com.cursoandroid.whatsappclone.config.ConfigFirebase;
+import com.cursoandroid.whatsappclone.config.RecyclerItemClickListener;
 import com.cursoandroid.whatsappclone.helper.UsuarioFirebase;
 import com.cursoandroid.whatsappclone.model.Usuario;
 import com.google.firebase.auth.FirebaseUser;
@@ -40,7 +44,7 @@ public class ContatosFragment extends Fragment {
         recyclerContatos = root.findViewById(R.id.recyclerContatos);
         usuariosRef = ConfigFirebase.getFirebaseDatabse().child("usuarios");
 
-        recuperarContatos();
+        //recuperarContatos();
 
         return root;
     }
@@ -49,6 +53,13 @@ public class ContatosFragment extends Fragment {
     public void onStop() {
         super.onStop();
         usuariosRef.removeEventListener(valueEventListenerContatos);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        recuperarContatos();
     }
 
     public void recuperarContatos(){
@@ -85,5 +96,22 @@ public class ContatosFragment extends Fragment {
         recyclerContatos.setLayoutManager(layoutManager);
         recyclerContatos.setHasFixedSize(true);
         recyclerContatos.setAdapter(adapter);
+
+        recyclerContatos.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), recyclerContatos, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                startActivity(new Intent(getActivity(), ChatActivity.class));
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+
+            }
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        }));
     }
 }
