@@ -101,7 +101,7 @@ public class ConfiguracoesActivity extends AppCompatActivity {
 
         edtNome.setText(usuario.getDisplayName());
 
-        Log.i("teste", usuario.getPhotoUrl().toString());
+        //Log.i("teste", usuario.getPhotoUrl().toString());
 
         if (url != null) {
             Glide.with(getApplicationContext()).load(url).into(imgPerfil);
