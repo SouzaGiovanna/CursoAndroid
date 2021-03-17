@@ -36,7 +36,7 @@ public class ContatosFragment extends Fragment {
     private DatabaseReference usuariosRef;
     private AdapterContatos adapter;
     private ValueEventListener valueEventListenerContatos;
-    private static FirebaseUser usuarioAtual;
+    private FirebaseUser usuarioAtual = UsuarioFirebase.getUsuarioAtual();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -65,7 +65,6 @@ public class ContatosFragment extends Fragment {
 
     public void recuperarContatos(){
         listUsuarios = new ArrayList<>();
-        usuarioAtual = UsuarioFirebase.getUsuarioAtual();
 
         valueEventListenerContatos = usuariosRef.addValueEventListener(new ValueEventListener() {
             @Override
