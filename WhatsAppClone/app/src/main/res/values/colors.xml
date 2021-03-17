@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#054d44</color>
     <color name="colorAccent">#FFFFFF</color>
     <color name="verdin">#25d366</color>
+    <color name="balaoRemetente">#98EFB9</color>
+    <color name="balaoDestinatario">#CCD3CD</color>
 </resources>
