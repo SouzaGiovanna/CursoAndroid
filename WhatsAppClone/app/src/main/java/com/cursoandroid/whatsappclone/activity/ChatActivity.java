@@ -14,6 +14,7 @@ import com.cursoandroid.whatsappclone.config.ConfigFirebase;
 import com.cursoandroid.whatsappclone.helper.Base64Custom;
 import com.cursoandroid.whatsappclone.helper.Permissoes;
 import com.cursoandroid.whatsappclone.helper.UsuarioFirebase;
+import com.cursoandroid.whatsappclone.model.Conversa;
 import com.cursoandroid.whatsappclone.model.Mensagem;
 import com.cursoandroid.whatsappclone.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -191,6 +192,7 @@ public class ChatActivity extends AppCompatActivity {
                                     Mensagem mensagem = new Mensagem();
 
                                     mensagem.setIdUsuario(idRemetente);
+                                    mensagem.setMensagem("imagem.png");
                                     mensagem.setImagem(url.toString());
 
                                     salvarMensagem(mensagem);
@@ -294,6 +296,9 @@ public class ChatActivity extends AppCompatActivity {
 
             //Limpar texto
             txtMensagem.setText("");
+
+            //Salvar conversa
+            salvarConversa(mensagem);
         }else{
             Toast.makeText(this, "Digite uma mensagem!", Toast.LENGTH_SHORT).show();
         }
@@ -302,6 +307,18 @@ public class ChatActivity extends AppCompatActivity {
     private void salvarMensagem(Mensagem mensagem){
         mensagemRef.push().setValue(mensagem);
         mensagemRefDestinatario.push().setValue(mensagem);
+    }
+
+    private void salvarConversa(Mensagem mensagem){
+        Conversa conversaRemetente = new Conversa();
+        conversaRemetente.setIdRemetente(idRemetente);
+        conversaRemetente.setIdDestinatario(idDestinatario);
+        conversaRemetente.setUltimaMensagem(mensagem.getMensagem());
+        conversaRemetente.setUsuarioExibicao(usuarioDestinatario);
+
+        conversaRemetente.salvar();
+
+        //Conversa conversaDestinatario = new Conversa();
     }
 
     private void recuperarMensagens(){
