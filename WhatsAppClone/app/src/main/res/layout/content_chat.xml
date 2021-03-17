@@ -53,6 +53,7 @@
                 android:id="@+id/imgAddFoto"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:onClick="alertCameraGaleria"
                 app:srcCompat="@drawable/ic_baseline_camera_alt_24" />
         </LinearLayout>
 

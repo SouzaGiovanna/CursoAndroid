@@ -17,13 +17,14 @@
             android:id="@+id/imgMensagem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/profile" />
+            app:srcCompat="@drawable/logo" />
 
         <TextView
             android:id="@+id/txtMensagem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
+            android:textColor="@color/design_default_color_on_secondary"
             android:textSize="18sp" />
     </LinearLayout>
 </RelativeLayout>
