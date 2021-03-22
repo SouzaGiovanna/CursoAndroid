@@ -10,4 +10,11 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
         android:theme="@style/Toolbar"/>
+
+    <com.miguelcatalan.materialsearchview.MaterialSearchView
+        android:id="@+id/search_view"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:theme="@style/SearchView"
+        android:hint="@string/pesquisa"/>
 </FrameLayout>

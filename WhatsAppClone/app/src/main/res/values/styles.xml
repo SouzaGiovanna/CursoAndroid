@@ -24,4 +24,8 @@
         <item name="colorControlActivated">#00ff00</item>
     </style>
 
+    <style name="SearchView">
+        <item name="colorAccent">@color/verdin</item>
+    </style>
+
 </resources>

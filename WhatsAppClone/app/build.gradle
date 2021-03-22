@@ -42,6 +42,9 @@ dependencies {
     implementation 'com.ogaclejapan.smarttablayout:library:2.0.0@aar'
     implementation 'com.ogaclejapan.smarttablayout:utils-v4:2.0.0@aar'
 
+    //Search view
+    implementation 'com.miguelcatalan:materialsearchview:1.4.0'
+
     //Imagem Arredondada
     implementation 'de.hdodenhof:circleimageview:2.2.0'
 
