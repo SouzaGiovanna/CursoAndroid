@@ -22,4 +22,5 @@
     <string name="txt_nome_grupo">Digite o nome do grupo aqui...</string>
     <string name="desc_config_grupo">Nomeie o grupo e escolha uma imagem (opicional)</string>
     <string name="participantes_grupo">Participantes: 0</string>
+    <string name="nome_grupo">Nome do grupo</string>
 </resources>
