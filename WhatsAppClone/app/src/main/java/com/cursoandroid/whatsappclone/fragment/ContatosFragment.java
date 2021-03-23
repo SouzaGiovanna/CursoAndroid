@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +15,7 @@ import android.widget.AdapterView;
 
 import com.cursoandroid.whatsappclone.R;
 import com.cursoandroid.whatsappclone.activity.ChatActivity;
+import com.cursoandroid.whatsappclone.activity.GrupoActivity;
 import com.cursoandroid.whatsappclone.adapter.AdapterContatos;
 import com.cursoandroid.whatsappclone.config.ConfigFirebase;
 import com.cursoandroid.whatsappclone.config.RecyclerItemClickListener;
@@ -66,6 +66,12 @@ public class ContatosFragment extends Fragment {
     public void recuperarContatos(){
         listUsuarios = new ArrayList<>();
 
+        Usuario itemGrupo = new Usuario();
+        itemGrupo.setNome("Novo Grupo");
+        itemGrupo.setEmail("");
+
+        listUsuarios.add(itemGrupo);
+
         valueEventListenerContatos = usuariosRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -101,9 +107,16 @@ public class ContatosFragment extends Fragment {
             @Override
             public void onItemClick(View view, int position) {
                 Usuario usuarioSelecionado = listUsuarios.get(position);
-                Intent intent = new Intent(getActivity(), ChatActivity.class);
+                boolean grupo = usuarioSelecionado.getEmail().isEmpty();
+                Intent intent;
 
-                intent.putExtra("contato", usuarioSelecionado);
+                if(grupo){
+                    intent = new Intent(getActivity(), GrupoActivity.class);
+                }
+                else {
+                    intent = new Intent(getActivity(), ChatActivity.class);
+                    intent.putExtra("contato", usuarioSelecionado);
+                }
 
                 startActivity(intent);
             }

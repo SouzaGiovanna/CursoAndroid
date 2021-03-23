@@ -18,13 +18,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activity.ConfigGrupoCriacaoActivity"
+            android:label="@string/title_activity_config_grupo_criacao"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".activity.GrupoActivity"/>
+        <activity
+            android:name=".activity.GrupoActivity"
+            android:label="@string/title_activity_grupo"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".activity.ChatActivity"
             android:label="@string/title_activity_chat"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".activity.MainActivity"/>
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.ConfiguracoesActivity"
-            android:parentActivityName=".activity.MainActivity"/>
+            android:parentActivityName=".activity.MainActivity" />
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.CadastroActivity" />
         <activity android:name=".activity.LoginActivity">
