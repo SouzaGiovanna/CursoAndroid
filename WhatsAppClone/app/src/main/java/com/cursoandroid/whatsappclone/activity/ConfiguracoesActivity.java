@@ -49,7 +49,7 @@ public class ConfiguracoesActivity extends AppCompatActivity {
     private static final int SELECAO_CAMERA = 100;
     private static final int SELECAO_GALERIA = 200;
     private StorageReference storageRef = ConfigFirebase.getStorage();
-    private StorageReference pastaFotoPerfil = storageRef.child("fotosPerfilUsuarios");
+    private StorageReference pastaFotoPerfil = storageRef.child("fotos").child("perfil");
     private String idUsuario = UsuarioFirebase.getIdentificadorUsuario();
     private DatabaseReference usuarioRef = ConfigFirebase.getFirebaseDatabse().child("usuarios").child(idUsuario);
     private String nomeArquivo = idUsuario;

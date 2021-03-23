@@ -85,6 +85,10 @@ public class ConfigGrupoCriacaoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 salvarGrupo();
+
+                Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
+                intent.putExtra("chatGrupo", grupo);
+                startActivity(intent);
             }
         });
 
@@ -234,7 +238,7 @@ public class ConfigGrupoCriacaoActivity extends AppCompatActivity {
         //(dados da imagem)
         byte[] dadosImagem = baos.toByteArray();
 
-        imagemRef = storage.child("grupos").child("FotoGrupo").child(grupo.getId()+ ".png");
+        imagemRef = storage.child("fotos").child("grupo").child(grupo.getId()+ ".png");
 
         //Retorna objeto que irá controlar o upload
         UploadTask uploadTask = imagemRef.putBytes(dadosImagem);

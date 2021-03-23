@@ -25,7 +25,8 @@
         <activity
             android:name=".activity.GrupoActivity"
             android:label="@string/title_activity_grupo"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".activity.MainActivity"/>
         <activity
             android:name=".activity.ChatActivity"
             android:label="@string/title_activity_chat"

@@ -115,7 +115,7 @@ public class ContatosFragment extends Fragment {
                 }
                 else {
                     intent = new Intent(getActivity(), ChatActivity.class);
-                    intent.putExtra("contato", usuarioSelecionado);
+                    intent.putExtra("chatContato", usuarioSelecionado);
                 }
 
                 startActivity(intent);
