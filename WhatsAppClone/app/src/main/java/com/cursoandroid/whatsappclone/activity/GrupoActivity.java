@@ -10,7 +10,6 @@ import com.cursoandroid.whatsappclone.config.RecyclerItemClickListener;
 import com.cursoandroid.whatsappclone.helper.UsuarioFirebase;
 import com.cursoandroid.whatsappclone.model.Usuario;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,7 +52,7 @@ public class GrupoActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Novo Grupo");
         getSupportActionBar().setSubtitle("0 de 0 selecionados");
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fabSalvarGrupo);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

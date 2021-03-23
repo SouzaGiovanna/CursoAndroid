@@ -1,6 +1,7 @@
 package com.cursoandroid.whatsappclone.model;
 
 import com.cursoandroid.whatsappclone.config.ConfigFirebase;
+import com.cursoandroid.whatsappclone.helper.Base64Custom;
 import com.google.firebase.database.DatabaseReference;
 
 import java.io.Serializable;
@@ -50,5 +51,30 @@ public class Grupo implements Serializable {
 
     public void setIntegrantes(List<Usuario> integrantes) {
         this.integrantes = integrantes;
+    }
+
+    public void salvar(){
+        DatabaseReference database = ConfigFirebase.getFirebaseDatabse();
+        DatabaseReference grupoRef = database.child("grupos");
+
+        grupoRef.child(getId()).setValue(this);
+
+        salvarConversaGrupo();
+    }
+
+    private void salvarConversaGrupo(){
+        for(Usuario integrante : getIntegrantes()){
+            String idRemetente = Base64Custom.codificarBase64(integrante.getEmail());
+            String idDestinatario = getId();
+
+            Conversa conversa = new Conversa();
+            conversa.setIdRemetente(idRemetente);
+            conversa.setIdDestinatario(idDestinatario);
+            conversa.setUltimaMensagem("");
+            conversa.setIsGroup("true");
+            conversa.setGrupo(this);
+
+            conversa.salvar();
+        }
     }
 }

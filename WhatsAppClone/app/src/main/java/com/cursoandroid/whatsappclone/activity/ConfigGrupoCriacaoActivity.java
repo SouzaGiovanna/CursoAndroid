@@ -8,11 +8,10 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
-import com.cursoandroid.whatsappclone.adapter.AdapterContatos;
 import com.cursoandroid.whatsappclone.adapter.AdapterMembrosGrupo;
 import com.cursoandroid.whatsappclone.config.ConfigFirebase;
-import com.cursoandroid.whatsappclone.config.RecyclerItemClickListener;
 import com.cursoandroid.whatsappclone.helper.Permissoes;
+import com.cursoandroid.whatsappclone.helper.UsuarioFirebase;
 import com.cursoandroid.whatsappclone.model.Grupo;
 import com.cursoandroid.whatsappclone.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,7 +19,6 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,9 +29,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,7 +39,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -85,11 +80,11 @@ public class ConfigGrupoCriacaoActivity extends AppCompatActivity {
         recyclerIntegrantesGrupo = findViewById(R.id.recyclerIntegrantesGrupo);
         grupo = new Grupo();
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fabSalvarGrupo);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                salvarGrupo();
             }
         });
 
@@ -265,5 +260,21 @@ public class ConfigGrupoCriacaoActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    private void salvarGrupo(){
+        String nomeGrupo = edtNomeGrupo.getText().toString();
+
+        if(!nomeGrupo.isEmpty()){
+            //adiciona à lista de membros o usuário que está logado
+            listIntegrantes.add(UsuarioFirebase.getDadosUsuarioLogado());
+
+            grupo.setIntegrantes(listIntegrantes);
+            grupo.setNome(nomeGrupo);
+            grupo.salvar();
+        }
+        else{
+            Toast.makeText(this, "Dê um nome ao grupo", Toast.LENGTH_SHORT).show();
+        }
     }
 }
