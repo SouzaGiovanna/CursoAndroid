@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private MaterialSearchView searchview;
     private FragmentPagerItemAdapter adapter;
+    private ConversasFragment conversasFragment;
+    private ContatosFragment contatosFragment;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -49,13 +51,13 @@ public class MainActivity extends AppCompatActivity {
 
         autenticacao = ConfigFirebase.getFirebaseAutenticacao();
 
+        configAdapterAbas();
+
         dados = getIntent().getExtras();
 
         if(dados != null) {
             manterConectado = (boolean) dados.getSerializable("manterConectado");
         }
-
-        configAdapterAbas();
 
         //Listener para caixa de texto
         searchview.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
@@ -66,12 +68,25 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                ConversasFragment conversasFragment = (ConversasFragment) adapter.getPage(0);
-
-                if(newText != null && !newText.isEmpty()){
-                    conversasFragment.pesquisarConversas(newText.toLowerCase());
+                //Verifica se esta pesquisando Conversas ou Contatos a partir da tab q está ativa
+                switch (viewPager.getCurrentItem()){
+                    case 0:
+                        if(newText != null && !newText.isEmpty()){
+                            conversasFragment.pesquisarConversas(newText.toLowerCase());
+                        }
+                        else{
+                            //conversasFragment.recarregarConversas();
+                        }
+                        break;
+                    case 1:
+                        if(newText != null && !newText.isEmpty()){
+                            contatosFragment = (ContatosFragment) adapter.getPage(1);
+                            contatosFragment.pesquisarContatos(newText.toLowerCase());
+                        }
+                        else{
+                            //contatosFragment.recarregarContatos();
+                        }
                 }
-
                 return true;
             }
         });
@@ -85,9 +100,15 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSearchViewClosed() {
-                ConversasFragment conversasFragment = (ConversasFragment) adapter.getPage(0);
-
-                conversasFragment.recarregarConversas();
+                switch (viewPager.getCurrentItem()){
+                    case 0:
+                        conversasFragment = (ConversasFragment) adapter.getPage(0);
+                        conversasFragment.recarregarConversas();
+                        break;
+                    case 1:
+                        contatosFragment = (ContatosFragment) adapter.getPage(1);
+                        contatosFragment.recarregarContatos();
+                }
             }
         });
     }

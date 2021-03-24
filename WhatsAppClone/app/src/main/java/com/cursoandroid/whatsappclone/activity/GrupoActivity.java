@@ -83,6 +83,7 @@ public class GrupoActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         usuariosRef.removeEventListener(valueEventListenerContatos);
+        finish();
     }
 
     private void recuperarContatos(){

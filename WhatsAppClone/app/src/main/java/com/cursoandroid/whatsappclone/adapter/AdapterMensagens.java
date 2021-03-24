@@ -65,11 +65,13 @@ public class AdapterMensagens extends RecyclerView.Adapter<AdapterMensagens.MyVi
         }
 
         String nome = mensagem.getNome();
-        if(!nome.isEmpty()){
-            holder.nome.setText(nome);
-        }
-        else{
-            holder.nome.setVisibility(View.GONE);
+
+        if(holder.nome != null) {
+            if (!nome.isEmpty()) {
+                holder.nome.setText(nome);
+            } else {
+                holder.nome.setVisibility(View.GONE);
+            }
         }
     }
 
@@ -98,7 +100,7 @@ public class AdapterMensagens extends RecyclerView.Adapter<AdapterMensagens.MyVi
             super(itemView);
 
             mensagem = itemView.findViewById(R.id.txtMensagem);
-            nome = itemView.findViewById(R.id.txtNomeExibicao);
+            nome = itemView.findViewById(R.id.txtNomeRemetente);
             imagem = itemView.findViewById(R.id.imgMensagem);
         }
     }

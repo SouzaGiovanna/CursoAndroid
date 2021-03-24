@@ -72,7 +72,7 @@ public class ConfigGrupoCriacaoActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Novo Grupo");
         getSupportActionBar().setSubtitle("Adicionar nome");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         txtTotalParticipantes = findViewById(R.id.txtTotalParticipantes);
         edtNomeGrupo = findViewById(R.id.edtNomeGrupo);
@@ -105,6 +105,12 @@ public class ConfigGrupoCriacaoActivity extends AppCompatActivity {
                 alertCameraGaleria();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 
     @Override

@@ -33,7 +33,7 @@ import java.util.List;
 public class ConversasFragment extends Fragment {
     private RecyclerView recyclerConversas;
     private AdapterConversas adapter;
-    private List<Conversa> listConversas;
+    private List<Conversa> listConversas = new ArrayList<>();
     private ChildEventListener childEventListener;
     private DatabaseReference database = ConfigFirebase.getFirebaseDatabse();
     private DatabaseReference conversaRef;
@@ -63,7 +63,7 @@ public class ConversasFragment extends Fragment {
     }
 
     private void recuperarConversas(){
-        listConversas = new ArrayList<>();
+        listConversas.clear();
 
         childEventListener = conversaRef.addChildEventListener(new ChildEventListener() {
             @Override
@@ -99,7 +99,7 @@ public class ConversasFragment extends Fragment {
         configurarRecycler(listConversas);
     }
 
-    private void configurarRecycler(List<Conversa> conversas){
+    private void configurarRecycler(final List<Conversa> conversas){
         adapter = new AdapterConversas(conversas, getActivity());
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -112,7 +112,7 @@ public class ConversasFragment extends Fragment {
         recyclerConversas.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), recyclerConversas, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Conversa conversaSelecionada = listConversas.get(position);
+                Conversa conversaSelecionada = conversas.get(position);
                 Intent intent = new Intent(getActivity(), ChatActivity.class);
 
                 if(conversaSelecionada.getIsGroup().equals("true")){
@@ -141,11 +141,21 @@ public class ConversasFragment extends Fragment {
         List<Conversa> listConversasBusca = new ArrayList<>();
 
         for(Conversa conversa : listConversas){
-            String nome = conversa.getUsuarioExibicao().getNome().toLowerCase();
-            String ultimaMsg = conversa.getUltimaMensagem().toLowerCase();
+            if(conversa.getUsuarioExibicao() != null) {
+                String nome = conversa.getUsuarioExibicao().getNome().toLowerCase();
+                String ultimaMsg = conversa.getUltimaMensagem().toLowerCase();
 
-            if(nome.contains(pesquisa) || ultimaMsg.contains(pesquisa)){
-                listConversasBusca.add(conversa);
+                if (nome.contains(pesquisa) || ultimaMsg.contains(pesquisa)) {
+                    listConversasBusca.add(conversa);
+                }
+            }
+            else{
+                String nome = conversa.getGrupo().getNome().toLowerCase();
+                String ultimaMsg = conversa.getUltimaMensagem().toLowerCase();
+
+                if (nome.contains(pesquisa) || ultimaMsg.contains(pesquisa)) {
+                    listConversasBusca.add(conversa);
+                }
             }
         }
 

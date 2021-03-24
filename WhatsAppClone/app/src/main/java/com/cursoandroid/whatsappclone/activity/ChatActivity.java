@@ -206,14 +206,35 @@ public class ChatActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Uri> task) {
                                     Uri url = task.getResult();
 
-                                    Mensagem mensagem = new Mensagem();
+                                    if(usuarioDestinatario != null){//Mensagem normal
 
-                                    mensagem.setIdUsuario(idRemetente);
-                                    mensagem.setMensagem("imagem.png");
-                                    mensagem.setImagem(url.toString());
+                                        Mensagem mensagem = new Mensagem();
 
-                                    salvarMensagem(idRemetente, idDestinatario, mensagem);
-                                    salvarMensagem(idDestinatario, idRemetente, mensagem);
+                                        mensagem.setIdUsuario(idRemetente);
+                                        mensagem.setMensagem("imagem.png");
+                                        mensagem.setImagem(url.toString());
+
+                                        salvarMensagem(idRemetente, idDestinatario, mensagem);
+                                        salvarMensagem(idDestinatario, idRemetente, mensagem);
+                                    }
+                                    else{//Mensagem em grupo
+                                        for(Usuario integrante : grupo.getIntegrantes()){
+                                            String idRemetenteGrupo = Base64Custom.codificarBase64(integrante.getEmail());
+                                            String idUsuarioLogadoGrupo = UsuarioFirebase.getIdentificadorUsuario();
+
+                                            Mensagem mensagem = new Mensagem();
+                                            mensagem.setIdUsuario(idUsuarioLogadoGrupo);
+                                            mensagem.setMensagem("imagem.png");
+                                            mensagem.setNome(usuarioRemetente.getNome());
+                                            mensagem.setImagem(url.toString());
+
+                                            //salvar mensagem para integrante do grupo
+                                            salvarMensagem(idRemetenteGrupo, idDestinatario, mensagem);
+
+                                            //Salvar conversa
+                                            salvarConversa(idRemetenteGrupo, idDestinatario, usuarioDestinatario, mensagem, true);
+                                        }
+                                    }
                                 }
                             });
 
@@ -316,9 +337,6 @@ public class ChatActivity extends AppCompatActivity {
                 //Salvar mensagem para o destinatario
                 salvarMensagem(idDestinatario, idRemetente, mensagem);
 
-                //Limpar texto
-                txtMensagem.setText("");
-
                 //Salvar Conversa remetente
                 salvarConversa(idRemetente, idDestinatario, usuarioDestinatario, mensagem, false);
 
@@ -342,6 +360,9 @@ public class ChatActivity extends AppCompatActivity {
                     salvarConversa(idRemetenteGrupo, idDestinatario, usuarioDestinatario, mensagem, true);
                 }
             }
+
+            //Limpar texto
+            txtMensagem.setText("");
         }else{
             Toast.makeText(this, "Digite uma mensagem!", Toast.LENGTH_SHORT).show();
         }
@@ -370,6 +391,8 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void recuperarMensagens(){
+        listMensagens.clear();
+
         childEventListener = mensagemRef.child(idRemetente).child(idDestinatario).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -377,7 +400,6 @@ public class ChatActivity extends AppCompatActivity {
 
                 listMensagens.add(mensagem);
 
-                Log.i("teste", mensagem.toString());
                 adapter.notifyDataSetChanged();
             }
 

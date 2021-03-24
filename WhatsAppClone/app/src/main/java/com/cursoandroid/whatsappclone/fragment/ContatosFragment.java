@@ -20,6 +20,7 @@ import com.cursoandroid.whatsappclone.adapter.AdapterContatos;
 import com.cursoandroid.whatsappclone.config.ConfigFirebase;
 import com.cursoandroid.whatsappclone.config.RecyclerItemClickListener;
 import com.cursoandroid.whatsappclone.helper.UsuarioFirebase;
+import com.cursoandroid.whatsappclone.model.Conversa;
 import com.cursoandroid.whatsappclone.model.Usuario;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,7 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContatosFragment extends Fragment {
-    private List<Usuario> listUsuarios;
+    private List<Usuario> listUsuarios = new ArrayList<>();
     private RecyclerView recyclerContatos;
     private DatabaseReference usuariosRef;
     private AdapterContatos adapter;
@@ -64,17 +65,11 @@ public class ContatosFragment extends Fragment {
     }
 
     public void recuperarContatos(){
-        listUsuarios = new ArrayList<>();
-
-        Usuario itemGrupo = new Usuario();
-        itemGrupo.setNome("Novo Grupo");
-        itemGrupo.setEmail("");
-
-        listUsuarios.add(itemGrupo);
-
         valueEventListenerContatos = usuariosRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                limparListaContatos();
+
                 for(DataSnapshot dados : snapshot.getChildren()){
                     Usuario usuario = dados.getValue(Usuario.class);
 
@@ -92,11 +87,25 @@ public class ContatosFragment extends Fragment {
             }
         });
 
-        configurarRecyclerView();
+        configurarRecyclerView(listUsuarios);
     }
 
-    private void configurarRecyclerView(){
-        adapter = new AdapterContatos(listUsuarios, getActivity());
+    public void limparListaContatos(){
+        listUsuarios.clear();
+
+        adicionarMenuNovoGrupo();
+    }
+
+    public void adicionarMenuNovoGrupo(){
+        Usuario itemGrupo = new Usuario();
+        itemGrupo.setNome("Novo Grupo");
+        itemGrupo.setEmail("");
+
+        listUsuarios.add(itemGrupo);
+    }
+
+    private void configurarRecyclerView(final List<Usuario> contatos){
+        adapter = new AdapterContatos(contatos, getActivity());
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerContatos.setLayoutManager(layoutManager);
@@ -106,7 +115,7 @@ public class ContatosFragment extends Fragment {
         recyclerContatos.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), recyclerContatos, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Usuario usuarioSelecionado = listUsuarios.get(position);
+                Usuario usuarioSelecionado = contatos.get(position);
                 boolean grupo = usuarioSelecionado.getEmail().isEmpty();
                 Intent intent;
 
@@ -131,5 +140,28 @@ public class ContatosFragment extends Fragment {
 
             }
         }));
+    }
+
+    public void pesquisarContatos(String pesquisa){
+        List<Usuario> listContatosBusca = new ArrayList<>();
+
+        for(Usuario contato : listUsuarios){
+            if(contato.getNome() != null) {
+                String nome = contato.getNome().toLowerCase();
+                String email = contato.getEmail().toLowerCase();
+
+                if (nome.contains(pesquisa) || email.contains(pesquisa)) {
+                    listContatosBusca.add(contato);
+                }
+            }
+        }
+
+        configurarRecyclerView(listContatosBusca);
+        adapter.notifyDataSetChanged();
+    }
+
+    public void recarregarContatos(){
+        configurarRecyclerView(listUsuarios);
+        adapter.notifyDataSetChanged();
     }
 }
