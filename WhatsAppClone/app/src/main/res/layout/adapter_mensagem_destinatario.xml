@@ -18,6 +18,14 @@
         android:background="@drawable/fundo_mensagem_destinatario"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/txtNomeExibicao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nome Usuario"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
         <ImageView
             android:id="@+id/imgMensagem"
             android:layout_width="wrap_content"

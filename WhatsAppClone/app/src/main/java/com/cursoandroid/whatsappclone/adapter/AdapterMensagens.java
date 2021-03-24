@@ -63,6 +63,14 @@ public class AdapterMensagens extends RecyclerView.Adapter<AdapterMensagens.MyVi
 
             holder.imagem.setVisibility(View.GONE);
         }
+
+        String nome = mensagem.getNome();
+        if(!nome.isEmpty()){
+            holder.nome.setText(nome);
+        }
+        else{
+            holder.nome.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -83,13 +91,14 @@ public class AdapterMensagens extends RecyclerView.Adapter<AdapterMensagens.MyVi
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView mensagem;
+        TextView mensagem, nome;
         ImageView imagem;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             mensagem = itemView.findViewById(R.id.txtMensagem);
+            nome = itemView.findViewById(R.id.txtNomeExibicao);
             imagem = itemView.findViewById(R.id.imgMensagem);
         }
     }
