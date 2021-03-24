@@ -22,8 +22,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -195,7 +193,7 @@ public class ChatActivity extends AppCompatActivity {
                     uploadTask.addOnFailureListener(ChatActivity.this, new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(ChatActivity.this, "Upload da imagem falhou: " +e.getMessage().toString(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(ChatActivity.this, "Upload da imagem falhou: " + e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }).addOnSuccessListener(ChatActivity.this, new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -207,7 +205,6 @@ public class ChatActivity extends AppCompatActivity {
                                     Uri url = task.getResult();
 
                                     if(usuarioDestinatario != null){//Mensagem normal
-
                                         Mensagem mensagem = new Mensagem();
 
                                         mensagem.setIdUsuario(idRemetente);

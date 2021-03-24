@@ -13,14 +13,11 @@
     <string name="info_nome_user">Esse não é o seu nome de usuário nem sua senha. Esse nome ficará visível para todos os seus contatos do WhatsApp Clone</string>
     <string name="nome_usuarios">Nome Usuário</string>
     <string name="email_usuarios">Email Usuário</string>
-    <string name="new_group">Novo grupo</string>
     <string name="title_activity_chat">ChatActivity</string>
     <string name="digite_aqui">Digite sua mensagem aqui!</string>
     <string name="ultima_msg">Ultima Mensagem</string>
     <string name="title_activity_grupo">GrupoActivity</string>
     <string name="title_activity_config_grupo_criacao">ConfigGrupoCriacaoActivity</string>
-    <string name="txt_nome_grupo">Digite o nome do grupo aqui...</string>
     <string name="desc_config_grupo">Nomeie o grupo e escolha uma imagem (opicional)</string>
-    <string name="participantes_grupo">Participantes: 0</string>
     <string name="nome_grupo">Nome do grupo</string>
 </resources>
