@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_degrade"
+    tools:context=".activity.CadastroActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25"
+        app:srcCompat="@drawable/logo" />
+
+    <EditText
+        android:id="@+id/edtNomeCadastrar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/background_caixa_texto"
+        android:ems="10"
+        android:hint="@string/digite_nome"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <EditText
+        android:id="@+id/edtEmailCadastrar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/background_caixa_texto"
+        android:ems="10"
+        android:hint="@string/digite_email"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        app:layout_constraintEnd_toEndOf="@+id/edtNomeCadastrar"
+        app:layout_constraintStart_toStartOf="@+id/edtNomeCadastrar"
+        app:layout_constraintTop_toBottomOf="@+id/edtNomeCadastrar" />
+
+    <EditText
+        android:id="@+id/edtSenhaCadastrar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/background_caixa_texto"
+        android:ems="10"
+        android:hint="@string/digite_senha"
+        android:inputType="numberPassword"
+        android:padding="10dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        app:layout_constraintEnd_toEndOf="@+id/edtEmailCadastrar"
+        app:layout_constraintStart_toStartOf="@+id/edtEmailCadastrar"
+        app:layout_constraintTop_toBottomOf="@+id/edtEmailCadastrar" />
+
+    <Button
+        android:id="@+id/btnCadastrar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/background_botao"
+        android:onClick="setarUsuario"
+        android:text="@string/btn_cadastrar"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/edtSenhaCadastrar"
+        app:layout_constraintStart_toStartOf="@+id/edtSenhaCadastrar"
+        app:layout_constraintTop_toBottomOf="@+id/edtSenhaCadastrar" />
+
+    <TextView
+        android:id="@+id/txtComConta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/com_conta"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCadastrar" />
+
+    <ProgressBar
+        android:id="@+id/progressCadastrar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/txtComConta"
+        app:layout_constraintStart_toStartOf="@+id/txtComConta"
+        app:layout_constraintTop_toBottomOf="@+id/txtComConta" />
+</androidx.constraintlayout.widget.ConstraintLayout>

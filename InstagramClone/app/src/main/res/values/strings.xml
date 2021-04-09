@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Instagram Clone</string>
+    <string name="digite_email">Digite seu email</string>
+    <string name="btn_entrar">ENTRAR</string>
+    <string name="sem_conta">Não possui uma conta? Cadastra-se</string>
+    <string name="digite_senha">Digite sua senha</string>
+    <string name="digite_nome">Digite seu nome</string>
+    <string name="btn_cadastrar">CADASTRAR</string>
+    <string name="com_conta">Já possui uma conta? Faça login</string>
 </resources>
