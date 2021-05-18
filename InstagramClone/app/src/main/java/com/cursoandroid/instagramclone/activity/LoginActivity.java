@@ -21,15 +21,18 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 
 public class LoginActivity extends AppCompatActivity {
-    TextView txtSemConta;
-    EditText edtEmail, edtSenha;
-    String email, senha;
-    ProgressBar progressLogin;
+    private TextView txtSemConta;
+    private EditText edtEmail, edtSenha;
+    private String email, senha;
+    private ProgressBar progressLogin;
+    private FirebaseAuth autenticacao = ConfigFirebase.getFirebaseAutenticacao();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        verificarUsuarioLogado();
 
         txtSemConta = findViewById(R.id.txtSemConta);
         edtEmail = findViewById(R.id.edtEmailLogin);
@@ -44,12 +47,17 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    private void verificarUsuarioLogado(){
+        if(autenticacao.getCurrentUser() != null){
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        }
+    }
+
     public void fazerLogin(View view){
         progressLogin.setVisibility(View.VISIBLE);
 
         if(verificarText()){
-            FirebaseAuth autenticacao = ConfigFirebase.getFirebaseAutenticacao();
-
             autenticacao.signInWithEmailAndPassword(email, senha).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {

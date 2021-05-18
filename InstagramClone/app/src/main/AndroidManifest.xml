@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cursoandroid.instagramclone">
 
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo_icon"
@@ -9,9 +17,21 @@
         android:roundIcon="@drawable/logo_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.CadastroActivity"></activity>
-        <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.LoginActivity">
+        <activity
+            android:name=".activity.EditarPerfilActivity"
+            android:label="@string/title_activity_editar_perfil"
+            android:parentActivityName=".activity.MainActivity"/>
+        <activity
+            android:name=".activity.CadastroActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeLoginCadastro" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeLoginCadastro">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

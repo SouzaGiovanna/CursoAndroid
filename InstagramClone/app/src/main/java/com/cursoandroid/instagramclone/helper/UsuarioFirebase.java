@@ -16,10 +16,9 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class UsuarioFirebase {
     private static FirebaseAuth usuario = ConfigFirebase.getFirebaseAutenticacao();
-    private static String email = usuario.getCurrentUser().getEmail();
 
     public static String getIdUsuario(){
-        String idUsuario = Base64Custom.codificarBase64(email);
+        String idUsuario = usuario.getUid();
 
         return idUsuario;
     }

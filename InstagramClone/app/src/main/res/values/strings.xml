@@ -2,9 +2,23 @@
     <string name="app_name">Instagram Clone</string>
     <string name="digite_email">Digite seu email</string>
     <string name="btn_entrar">ENTRAR</string>
-    <string name="sem_conta">Não possui uma conta? Cadastra-se</string>
+    <string name="sem_conta">Não possui uma conta? Cadastre-se</string>
     <string name="digite_senha">Digite sua senha</string>
     <string name="digite_nome">Digite seu nome</string>
     <string name="btn_cadastrar">CADASTRAR</string>
     <string name="com_conta">Já possui uma conta? Faça login</string>
+    <string name="menu_sair">Sair</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_pesquisa">Pesquisa</string>
+    <string name="menu_nova_postagem">Nova Postagem</string>
+    <string name="menu_perfil">Perfil</string>
+    <string name="publicacoes">Publicações</string>
+    <string name="seguidores">Seguidores</string>
+    <string name="perfis_seguindo">Seguindo</string>
+    <string name="editar_perfil">Editar perfil</string>
+    <string name="title_activity_editar_perfil">EditarPerfilActivity</string>
+    <string name="alterar_foto">Alterar foto de perfil</string>
+    <string name="nome_usuario">Nome</string>
+    <string name="salvar">Salvar</string>
+    <string name="pedir_foto">Selecione o local da foto</string>
 </resources>
