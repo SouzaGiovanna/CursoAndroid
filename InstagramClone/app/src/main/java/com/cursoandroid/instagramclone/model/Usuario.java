@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Usuario implements Serializable {
+public class Usuario implements Serializable, Comparable<Usuario> {
     private String id;
     private String nome;
     private String email;
@@ -84,5 +84,10 @@ public class Usuario implements Serializable {
         usuarioMap.put("foto", getFoto());
 
         return usuarioMap;
+    }
+
+    @Override
+    public int compareTo(Usuario usuario) {
+        return this.nome.compareToIgnoreCase(usuario.getNome());
     }
 }
