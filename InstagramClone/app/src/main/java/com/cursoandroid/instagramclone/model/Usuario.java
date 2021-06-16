@@ -15,11 +15,13 @@ public class Usuario implements Serializable, Comparable<Usuario> {
     private String email;
     private String senha;
     private String foto;
+    private Integer seguidores = 0;
+    private Integer seguindo = 0;
+    private Integer publicacoes = 0;
 
     public Usuario() {
     }
 
-    @Exclude
     public String getId() {
         return id;
     }
@@ -61,6 +63,30 @@ public class Usuario implements Serializable, Comparable<Usuario> {
         this.foto = foto;
     }
 
+    public Integer getSeguidores() {
+        return seguidores;
+    }
+
+    public void setSeguidores(Integer seguidores) {
+        this.seguidores = seguidores;
+    }
+
+    public Integer getSeguindo() {
+        return seguindo;
+    }
+
+    public void setSeguindo(Integer seguindo) {
+        this.seguindo = seguindo;
+    }
+
+    public Integer getPublicacoes() {
+        return publicacoes;
+    }
+
+    public void setPublicacoes(Integer publicacoes) {
+        this.publicacoes = publicacoes;
+    }
+
     public void salvar(){
         DatabaseReference firebase = ConfigFirebase.getFirebaseDatabse();
         firebase.child("usuarios").child(this.id).setValue(this);
@@ -82,6 +108,9 @@ public class Usuario implements Serializable, Comparable<Usuario> {
         usuarioMap.put("email", getEmail());
         usuarioMap.put("nome", getNome());
         usuarioMap.put("foto", getFoto());
+        usuarioMap.put("seguidores", getSeguidores());
+        usuarioMap.put("seguindo", getSeguindo());
+        usuarioMap.put("publicacoes", getPublicacoes());
 
         return usuarioMap;
     }

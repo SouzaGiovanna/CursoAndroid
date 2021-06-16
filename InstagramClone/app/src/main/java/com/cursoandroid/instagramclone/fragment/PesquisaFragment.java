@@ -1,5 +1,6 @@
 package com.cursoandroid.instagramclone.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,11 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.SearchView;
 
 import com.cursoandroid.instagramclone.R;
+import com.cursoandroid.instagramclone.activity.PerfilOutrosUsuariosActivity;
 import com.cursoandroid.instagramclone.adapter.AdapterUsuariosPesquisa;
 import com.cursoandroid.instagramclone.config.ConfigFirebase;
+import com.cursoandroid.instagramclone.helper.RecyclerItemClickListener;
 import com.cursoandroid.instagramclone.helper.UsuarioFirebase;
 import com.cursoandroid.instagramclone.model.Usuario;
 import com.google.firebase.auth.FirebaseUser;
@@ -75,7 +79,6 @@ public class PesquisaFragment extends Fragment {
                         listUsuarios.add(usuario);
                     }
                 }
-
                 Collections.sort(listUsuarios);
                 
                 adapter.notifyDataSetChanged();
@@ -86,7 +89,6 @@ public class PesquisaFragment extends Fragment {
 
             }
         });
-        
         configurarRecyclerView(listUsuarios);
     }
 
@@ -97,6 +99,8 @@ public class PesquisaFragment extends Fragment {
         recyclerUsuarios.setLayoutManager(layoutManager);
         recyclerUsuarios.setHasFixedSize(true);
         recyclerUsuarios.setAdapter(adapter);
+
+        configurarEventoClickRecylerView(usuarios);
     }
 
     public void pesquisarUsuarios(String pesquisa){
@@ -106,7 +110,7 @@ public class PesquisaFragment extends Fragment {
             if(usuario.getNome() != null){
                 String nome = usuario.getNome().toLowerCase();
 
-                if(nome.contains(pesquisa)){
+                if(nome.contains(pesquisa.toLowerCase())){
                     listUsuariosPesquisa.add(usuario);
                 }
             }
@@ -143,5 +147,30 @@ public class PesquisaFragment extends Fragment {
                 return false;
             }
         });
+    }
+
+    private void configurarEventoClickRecylerView(final List<Usuario> usuarios){
+        recyclerUsuarios.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), recyclerUsuarios, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Usuario usuarioSelecionado = usuarios.get(position);
+
+                Intent intent = new Intent(getContext(), PerfilOutrosUsuariosActivity.class);
+
+                intent.putExtra("usuarioSelecionado", usuarioSelecionado);
+
+                startActivity(intent);
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+
+            }
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        }));
     }
 }

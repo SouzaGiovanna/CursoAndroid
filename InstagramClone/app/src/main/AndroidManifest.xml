@@ -18,9 +18,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activity.PerfilOutrosUsuariosActivity"
+            android:parentActivityName=".activity.MainActivity"/>
+        <activity
             android:name=".activity.EditarPerfilActivity"
             android:label="@string/title_activity_editar_perfil"
-            android:parentActivityName=".activity.MainActivity"/>
+            android:parentActivityName=".activity.MainActivity" />
         <activity
             android:name=".activity.CadastroActivity"
             android:screenOrientation="portrait"

@@ -13,6 +13,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 public class UsuarioFirebase {
     private static FirebaseAuth usuario = ConfigFirebase.getFirebaseAutenticacao();
@@ -72,10 +76,11 @@ public class UsuarioFirebase {
 
     public static Usuario getDadosUsuarioLogado(){
         FirebaseUser firebaseUser = getUsuarioAtual();
-        Usuario usuario = new Usuario();
+        final Usuario usuario = new Usuario();
 
         usuario.setEmail(firebaseUser.getEmail());
         usuario.setNome(firebaseUser.getDisplayName());
+        usuario.setId(firebaseUser.getUid());
 
         if(firebaseUser.getPhotoUrl() == null){
             usuario.setFoto("");
@@ -83,7 +88,6 @@ public class UsuarioFirebase {
         else{
             usuario.setFoto(firebaseUser.getPhotoUrl().toString());
         }
-
         return usuario;
     }
 }

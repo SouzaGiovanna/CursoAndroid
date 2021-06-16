@@ -97,13 +97,13 @@
         android:textColor="@android:color/black"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/img_perfil"
-        app:layout_constraintEnd_toEndOf="@+id/btn_editar_perfil"
+        app:layout_constraintEnd_toEndOf="@+id/btn_perfil"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/txt_qtd_pessoas_seguindo" />
 
     <Button
-        android:id="@+id/btn_editar_perfil"
+        android:id="@+id/btn_perfil"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
