@@ -35,17 +35,23 @@ public class AdapterUsuariosPesquisa extends RecyclerView.Adapter<AdapterUsuario
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Usuario usuario = usuarios.get(position);
+        if(getItemCount() != 0){
+            Usuario usuario = usuarios.get(position);
 
-        holder.nome.setText(usuario.getNome());
+            holder.nome.setText(usuario.getNome());
 
-        if(usuario.getFoto() != null){
-            Uri url = Uri.parse(usuario.getFoto());
+            if(usuario.getFoto() != null){
+                Uri url = Uri.parse(usuario.getFoto());
 
-            Glide.with(context).load(url).into(holder.foto);
+                Glide.with(context).load(url).into(holder.foto);
+            }
+            else{
+                holder.foto.setImageResource(R.drawable.raposinha);
+            }
         }
         else{
-            holder.foto.setImageResource(R.drawable.raposinha);
+            holder.nome.setText(R.string.sem_resultado_pesquisa);
+            holder.foto.setVisibility(View.GONE);
         }
     }
 

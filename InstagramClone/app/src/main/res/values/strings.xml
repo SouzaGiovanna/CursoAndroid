@@ -23,4 +23,6 @@
     <string name="pedir_foto">Selecione o local da foto</string>
     <string name="pesquisa_perfils">Procure outras pessoas aqui!</string>
     <string name="seguir">Seguir</string>
+    <string name="seguindo">Seguindo</string>
+    <string name="sem_resultado_pesquisa">Não há nenhum usuário com o nome digitado, tente outro nome!</string>
 </resources>
