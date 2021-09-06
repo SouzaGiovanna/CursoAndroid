@@ -25,4 +25,10 @@
     <string name="seguir">Seguir</string>
     <string name="seguindo">Seguindo</string>
     <string name="sem_resultado_pesquisa">Não há nenhum usuário com o nome digitado, tente outro nome!</string>
+    <string name="abrir_camera">Abrir Câmera</string>
+    <string name="abrir_galeria">Abrir Galeria</string>
+    <string name="filtros">Filtros</string>
+    <string name="publicar">Publicar</string>
+    <string name="legenda_publicacao">Legenda</string>
+    <string name="nome_filtro">Filtro</string>
 </resources>

@@ -3,10 +3,13 @@ package com.cursoandroid.instagramclone.helper;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.cursoandroid.instagramclone.config.ConfigFirebase;
+import com.cursoandroid.instagramclone.model.Postagem;
 import com.cursoandroid.instagramclone.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -37,16 +40,8 @@ public class SalvarFotoFirebase {
         //Recupera bitmap da imagem (imagem a ser carregada)
         Bitmap bitmap = foto.getDrawingCache();
 
-        //Comprimo bitmap para um formato png/jpg
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 75, baos);
-
-        //converte o baos para pixel brutos em uma matriz de bytes
-        //(dados da imagem)
-        byte[] dadosImagem = baos.toByteArray();
-
         //Retorna objeto que irá controlar o upload
-        UploadTask uploadTask = imgRef.putBytes(dadosImagem);
+        UploadTask uploadTask = imgRef.putBytes(TratamentoImagens.ConverterImagemByteArray(bitmap));
 
         uploadTask.addOnSuccessListener(activity, new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -60,6 +55,44 @@ public class SalvarFotoFirebase {
                         atualizaFotoUsuario(url);
                     }
                 });
+            }
+        });
+    }
+
+    public void salvar(ImageView foto, final Activity activity, final Postagem postagem){
+        //Configura para imagem ser salva em memória
+        foto.setDrawingCacheEnabled(true);
+        foto.buildDrawingCache();
+
+        //Recupera bitmap da imagem (imagem a ser carregada)
+        Bitmap bitmap = foto.getDrawingCache();
+
+        //Retorna objeto que irá controlar o upload
+        UploadTask uploadTask = imgRef.putBytes(TratamentoImagens.ConverterImagemByteArray(bitmap));
+
+        uploadTask.addOnSuccessListener(activity, new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                imgRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Uri> task) {
+                        Uri url = task.getResult();
+
+                        Toast.makeText(activity, "Imagem salva com sucesso!", Toast.LENGTH_LONG).show();
+                        postagem.setFoto(url.toString());
+                        if (postagem.salvar()) {
+                            Toast.makeText(activity, "Postagem salva com sucesso!", Toast.LENGTH_SHORT).show();
+
+                            activity.finish();
+                        }
+                    }
+                });
+            }
+        }).addOnFailureListener(activity, new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(activity, "Erro ao salvar a imagem, tente novamente!", Toast.LENGTH_LONG).show();
             }
         });
     }

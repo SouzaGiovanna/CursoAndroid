@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".activity.FiltroActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgFotoPostagem"
+            android:layout_width="match_parent"
+            android:layout_height="420dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include"
+            app:srcCompat="@drawable/raposinha" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_filtros_postagem"
+            android:layout_width="0dp"
+            android:layout_height="110dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txt_legenda_publicacao"
+            app:layout_constraintStart_toStartOf="@+id/txt_legenda_publicacao"
+            app:layout_constraintTop_toBottomOf="@+id/txt_legenda_publicacao"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <EditText
+            android:id="@+id/txt_legenda_publicacao"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/legenda_publicacao"
+            android:inputType="textMultiLine"
+            app:layout_constraintEnd_toEndOf="@+id/imgFotoPostagem"
+            app:layout_constraintStart_toStartOf="@+id/imgFotoPostagem"
+            app:layout_constraintTop_toBottomOf="@+id/imgFotoPostagem" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

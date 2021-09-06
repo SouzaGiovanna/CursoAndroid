@@ -51,4 +51,7 @@ dependencies {
 
     //Search view
     implementation 'com.miguelcatalan:materialsearchview:1.4.0'
+
+    /*Dependências AndroidPhotoFilter*/
+    implementation 'info.androidhive:imagefilters:1.0.7'
 }
