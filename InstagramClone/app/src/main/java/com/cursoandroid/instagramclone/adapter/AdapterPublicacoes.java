@@ -77,7 +77,7 @@ public class AdapterPublicacoes extends ArrayAdapter<String> {
             @Override
             public void onLoadingCancelled(String imageUri, View view) {
                 viewHolder.progressBar.setVisibility(View.GONE);
-                viewHolder.erro.setVisibility(View.VISIBLE);
+                //viewHolder.erro.setVisibility(View.VISIBLE);
                 //viewHolder.img.setImageResource(R.drawable.background_img_erro);
             }
         });

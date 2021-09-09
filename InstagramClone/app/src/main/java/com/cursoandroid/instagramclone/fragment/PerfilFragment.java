@@ -15,18 +15,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.cursoandroid.instagramclone.R;
 import com.cursoandroid.instagramclone.activity.EditarPerfilActivity;
+import com.cursoandroid.instagramclone.adapter.AdapterPublicacoes;
 import com.cursoandroid.instagramclone.config.ConfigFirebase;
 import com.cursoandroid.instagramclone.helper.UsuarioFirebase;
+import com.cursoandroid.instagramclone.model.Postagem;
 import com.cursoandroid.instagramclone.model.Usuario;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
+import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -35,6 +45,10 @@ public class PerfilFragment extends Fragment {
     private CircleImageView imgPerfil;
     private Usuario usuarioAtual = UsuarioFirebase.getDadosUsuarioLogado();;
     private TextView txtSeguidores, txtPublicacoes, txtSeguindo;
+    private GridView gridPublicacoes;
+
+    private AdapterPublicacoes adapterPublicacoes;
+    private DatabaseReference postagensRef;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -46,6 +60,7 @@ public class PerfilFragment extends Fragment {
         txtPublicacoes = root.findViewById(R.id.txt_qtd_publicacoes);
         txtSeguidores = root.findViewById(R.id.txt_qtd_seguidores);
         txtSeguindo = root.findViewById(R.id.txt_qtd_pessoas_seguindo);
+        gridPublicacoes = root.findViewById(R.id.grid_publicacoes);
 
         btnEditarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +78,43 @@ public class PerfilFragment extends Fragment {
         super.onStart();
 
         recuperarDadosUsuario();
+        inicializarImageLoader();
+        carregarFotosPostagem();
+    }
+
+    private void inicializarImageLoader(){
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getContext()).memoryCache(new LruMemoryCache(2 * 1024 * 1024)).memoryCacheSize(2 * 1024 * 1024).diskCacheSize(50 * 1024 * 1024).diskCacheFileCount(100).diskCacheFileNameGenerator(new HashCodeFileNameGenerator()).build();
+        ImageLoader.getInstance().init(config);
+    }
+
+    private void carregarFotosPostagem(){
+        postagensRef = ConfigFirebase.getFirebaseDatabse().child("postagens").child(usuarioAtual.getId());
+
+        postagensRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //Configurar o tamnaho da GridView
+                int tamanhoGrid = getResources().getDisplayMetrics().widthPixels;
+                int tamanhoImagem = tamanhoGrid / 3;
+                gridPublicacoes.setColumnWidth(tamanhoImagem);
+
+                List<String> urlFotos = new ArrayList<>();
+                for(DataSnapshot data : snapshot.getChildren()){
+                    Postagem postagem = data.getValue(Postagem.class);
+                    urlFotos.add(postagem.getFoto());
+                }
+
+                Log.i("teste", String.valueOf(urlFotos));
+
+                adapterPublicacoes = new AdapterPublicacoes(getContext(), R.layout.adapter_publicacoes, urlFotos);
+                gridPublicacoes.setAdapter(adapterPublicacoes);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @SuppressLint("SetTextI18n")
@@ -81,7 +133,6 @@ public class PerfilFragment extends Fragment {
         usuarioRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 txtPublicacoes.setText(dataSnapshot.child("publicacoes").getValue().toString());
                 txtSeguidores.setText(dataSnapshot.child("seguidores").getValue().toString());
                 txtSeguindo.setText(dataSnapshot.child("seguindo").getValue().toString());
