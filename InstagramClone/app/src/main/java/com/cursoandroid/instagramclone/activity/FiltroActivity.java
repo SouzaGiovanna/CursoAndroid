@@ -11,6 +11,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -22,10 +23,16 @@ import android.widget.Toast;
 
 import com.cursoandroid.instagramclone.R;
 import com.cursoandroid.instagramclone.adapter.AdapterMiniaturasFiltros;
+import com.cursoandroid.instagramclone.config.ConfigFirebase;
 import com.cursoandroid.instagramclone.helper.RecyclerItemClickListener;
 import com.cursoandroid.instagramclone.helper.SalvarFotoFirebase;
 import com.cursoandroid.instagramclone.helper.UsuarioFirebase;
 import com.cursoandroid.instagramclone.model.Postagem;
+import com.cursoandroid.instagramclone.model.Usuario;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.zomato.photofilters.FilterPack;
 import com.zomato.photofilters.imageprocessors.Filter;
 import com.zomato.photofilters.utils.ThumbnailItem;
@@ -45,6 +52,7 @@ public class FiltroActivity extends AppCompatActivity {
     private List<ThumbnailItem> listaFiltros;
     private RecyclerView recyclerFiltros;
     private AdapterMiniaturasFiltros adapterMiniaturasFiltros;
+    private Usuario usuarioLogado;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -156,6 +164,29 @@ public class FiltroActivity extends AppCompatActivity {
 
         SalvarFotoFirebase salvarFotoFirebase = new SalvarFotoFirebase("postagens", postagem.getId());
         salvarFotoFirebase.salvar(imgFotoPostagem, this, postagem);
+
+        atualizarQtdPostagens();
+    }
+
+    private void atualizarQtdPostagens(){
+        DatabaseReference usuarioLogadoRef = ConfigFirebase.getFirebaseDatabse().child("usuarios").child(UsuarioFirebase.getIdUsuario());
+
+        usuarioLogadoRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                usuarioLogado = snapshot.getValue(Usuario.class);
+
+                int qtdPublicacoes = usuarioLogado.getPublicacoes() + 1;
+                usuarioLogado.setPublicacoes(qtdPublicacoes);
+                usuarioLogado.atualizar();
+                //Log.i("teste", usuarioLogado.getNome());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override

@@ -31,6 +31,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/InstagramClone" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -46,9 +47,9 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="423" y="195" key="FileChooserDialogImpl" timestamp="1611761340367">
+    <state x="739" y="247" key="FileChooserDialogImpl" timestamp="1631025508506">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state x="423" y="195" key="FileChooserDialogImpl/0.0.1280.984/-1366.156.1366.728@0.0.1280.984" timestamp="1611761340367" />
+    <state x="739" y="247" key="FileChooserDialogImpl/0.0.1280.984@0.0.1280.984" timestamp="1631025508506" />
   </component>
 </project>

@@ -19,6 +19,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            android.defaultConfig.vectorDrawables.useSupportLibrary = true
         }
     }
 }
@@ -54,4 +55,7 @@ dependencies {
 
     /*Dependências AndroidPhotoFilter*/
     implementation 'info.androidhive:imagefilters:1.0.7'
+
+    /*Dependências do Android Universal Image Loader*/
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 }

@@ -11,21 +11,31 @@ import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import androidx.cardview.widget.CardView;
+
+import android.widget.GridView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.cursoandroid.instagramclone.R;
+import com.cursoandroid.instagramclone.adapter.AdapterPublicacoes;
 import com.cursoandroid.instagramclone.config.ConfigFirebase;
 import com.cursoandroid.instagramclone.helper.UsuarioFirebase;
+import com.cursoandroid.instagramclone.model.Postagem;
 import com.cursoandroid.instagramclone.model.Usuario;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -37,11 +47,13 @@ public class PerfilOutrosUsuariosActivity extends AppCompatActivity {
     private Button btnSeguir;
     private CircleImageView imgPerfil;
     private TextView txtSeguidores, txtPublicacoes, txtSeguindo;
+    private GridView gridPublicacoes;
 
     private DatabaseReference firebase = ConfigFirebase.getFirebaseDatabse();
-    private DatabaseReference usuarioRef, usuarioLogadoRef, seguidoresRef;
+    private DatabaseReference usuarioRef, usuarioLogadoRef, seguidoresRef, postagensRef;
 
     private ValueEventListener valueEventListenerDadosUsuario, valueEventListenerDadosUsuarioLogado;
+    private AdapterPublicacoes adapterPublicacoes;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -65,11 +77,42 @@ public class PerfilOutrosUsuariosActivity extends AppCompatActivity {
         txtPublicacoes = findViewById(R.id.txt_qtd_publicacoes);
         txtSeguidores = findViewById(R.id.txt_qtd_seguidores);
         txtSeguindo = findViewById(R.id.txt_qtd_pessoas_seguindo);
+        gridPublicacoes = findViewById(R.id.grid_publicacoes);
 
         usuarioRef = firebase.child("usuarios");
         seguidoresRef = firebase.child("seguidores");
 
         preencherDadosUsuarioSelecionado();
+    }
+
+    private void inicializarImageLoader(){
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
+        ImageLoader.getInstance().init(config);
+    }
+
+    private void carregarFotosPostagem(){
+        postagensRef = ConfigFirebase.getFirebaseDatabse().child("postagens").child(usuarioSelecionado.getId());
+
+        postagensRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<String> urlFotos = new ArrayList<>();
+                for(DataSnapshot data : snapshot.getChildren()){
+                    Postagem postagem = data.getValue(Postagem.class);
+                    urlFotos.add(postagem.getFoto());
+                }
+
+                Log.i("teste", String.valueOf(urlFotos));
+
+                adapterPublicacoes = new AdapterPublicacoes(getApplicationContext(), R.layout.adapter_publicacoes, urlFotos);
+                gridPublicacoes.setAdapter(adapterPublicacoes);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void recuperarDadosUsuarioLogado(){
@@ -159,6 +202,8 @@ public class PerfilOutrosUsuariosActivity extends AppCompatActivity {
     protected void onStart() {
         recuperarDadosUsuario();
         recuperarDadosUsuarioLogado();
+        inicializarImageLoader();
+        carregarFotosPostagem();
         super.onStart();
     }
 
