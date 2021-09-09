@@ -30,6 +30,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
+import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -86,7 +88,7 @@ public class PerfilOutrosUsuariosActivity extends AppCompatActivity {
     }
 
     private void inicializarImageLoader(){
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).memoryCache(new LruMemoryCache(2 * 1024 * 1024)).memoryCacheSize(2 * 1024 * 1024).diskCacheSize(50 * 1024 * 1024).diskCacheFileCount(100).diskCacheFileNameGenerator(new HashCodeFileNameGenerator()).build();
         ImageLoader.getInstance().init(config);
     }
 
@@ -96,6 +98,11 @@ public class PerfilOutrosUsuariosActivity extends AppCompatActivity {
         postagensRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //Configurar o tamnaho da GridView
+                int tamanhoGrid = getResources().getDisplayMetrics().widthPixels;
+                int tamanhoImagem = tamanhoGrid / 3;
+                gridPublicacoes.setColumnWidth(tamanhoImagem);
+
                 List<String> urlFotos = new ArrayList<>();
                 for(DataSnapshot data : snapshot.getChildren()){
                     Postagem postagem = data.getValue(Postagem.class);

@@ -6,9 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+    <com.cursoandroid.instagramclone.helper.SquareImageView
         android:id="@+id/imgPublicacao"
-        android:layout_width="150dp"
+        android:layout_width="0dp"
         android:layout_height="150dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
