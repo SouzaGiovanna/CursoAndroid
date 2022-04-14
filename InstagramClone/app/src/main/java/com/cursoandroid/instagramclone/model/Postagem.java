@@ -3,7 +3,9 @@ package com.cursoandroid.instagramclone.model;
 import com.cursoandroid.instagramclone.config.ConfigFirebase;
 import com.google.firebase.database.DatabaseReference;
 
-public class Postagem {
+import java.io.Serializable;
+
+public class Postagem implements Serializable {
     private String id, idUsuario, descricao, foto;
     private DatabaseReference firebaseRef = ConfigFirebase.getFirebaseDatabse();
     private DatabaseReference postagemRef = firebaseRef.child("postagens");

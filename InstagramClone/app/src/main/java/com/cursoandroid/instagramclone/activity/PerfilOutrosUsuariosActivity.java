@@ -8,13 +8,18 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
-import androidx.cardview.widget.CardView;
+
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.widget.GridView;
 import android.widget.TextView;
@@ -35,6 +40,7 @@ import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -56,6 +62,10 @@ public class PerfilOutrosUsuariosActivity extends AppCompatActivity {
 
     private ValueEventListener valueEventListenerDadosUsuario, valueEventListenerDadosUsuarioLogado;
     private AdapterPublicacoes adapterPublicacoes;
+
+    private List<Postagem> postagens = new ArrayList<>();
+    private FragmentManager fragmentManager = getSupportFragmentManager();
+    private FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -93,12 +103,12 @@ public class PerfilOutrosUsuariosActivity extends AppCompatActivity {
     }
 
     private void carregarFotosPostagem(){
-        postagensRef = ConfigFirebase.getFirebaseDatabse().child("postagens").child(usuarioSelecionado.getId());
+        postagensRef = firebase.child("postagens").child(usuarioSelecionado.getId());
 
         postagensRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //Configurar o tamnaho da GridView
+                //Configurar o tamanho da GridView
                 int tamanhoGrid = getResources().getDisplayMetrics().widthPixels;
                 int tamanhoImagem = tamanhoGrid / 3;
                 gridPublicacoes.setColumnWidth(tamanhoImagem);
@@ -106,10 +116,11 @@ public class PerfilOutrosUsuariosActivity extends AppCompatActivity {
                 List<String> urlFotos = new ArrayList<>();
                 for(DataSnapshot data : snapshot.getChildren()){
                     Postagem postagem = data.getValue(Postagem.class);
+                    postagens.add(postagem);
                     urlFotos.add(postagem.getFoto());
                 }
 
-                Log.i("teste", String.valueOf(urlFotos));
+                //Log.i("teste", String.valueOf(urlFotos));
 
                 adapterPublicacoes = new AdapterPublicacoes(getApplicationContext(), R.layout.adapter_publicacoes, urlFotos);
                 gridPublicacoes.setAdapter(adapterPublicacoes);
@@ -119,6 +130,20 @@ public class PerfilOutrosUsuariosActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+        });
+    }
+
+    private void abrirPostagemSelecionada(){
+        gridPublicacoes.setOnItemClickListener((adapterView, view, i, l) -> {
+            Postagem postagem = postagens.get(i);
+
+            Intent intent = new Intent(getApplicationContext(), VisualizarPostagemActivity.class);
+
+            //Log.i("teste", String.valueOf(postagem.getDescricao()));
+            intent.putExtra("postagem", postagem.getId());
+            intent.putExtra("usuario", usuarioSelecionado);
+
+            startActivity(intent);
         });
     }
 
@@ -211,6 +236,7 @@ public class PerfilOutrosUsuariosActivity extends AppCompatActivity {
         recuperarDadosUsuarioLogado();
         inicializarImageLoader();
         carregarFotosPostagem();
+        abrirPostagemSelecionada();
         super.onStart();
     }
 

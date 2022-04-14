@@ -7,7 +7,7 @@
         android:required="true" />
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -18,7 +18,11 @@
         android:roundIcon="@drawable/logo_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.FiltroActivity"></activity>
+        <activity
+            android:name=".activity.VisualizarPostagemActivity"
+            android:exported="false"
+            android:parentActivityName=".activity.PerfilOutrosUsuariosActivity"/>
+        <activity android:name=".activity.FiltroActivity" />
         <activity
             android:name=".activity.PerfilOutrosUsuariosActivity"
             android:parentActivityName=".activity.MainActivity" />
