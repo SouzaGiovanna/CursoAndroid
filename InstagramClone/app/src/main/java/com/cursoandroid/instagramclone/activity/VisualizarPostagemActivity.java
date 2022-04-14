@@ -48,6 +48,7 @@ public class VisualizarPostagemActivity extends AppCompatActivity {
         recuperarBundle();
 
         Toolbar toolbar = findViewById(R.id.toolbarPrincipal);
+        toolbar.setTitle("Visualizar Postagem");
         setSupportActionBar(toolbar);
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);

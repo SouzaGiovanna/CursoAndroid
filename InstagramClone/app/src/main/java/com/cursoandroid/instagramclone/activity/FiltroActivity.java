@@ -7,6 +7,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
@@ -53,6 +55,7 @@ public class FiltroActivity extends AppCompatActivity {
     private RecyclerView recyclerFiltros;
     private AdapterMiniaturasFiltros adapterMiniaturasFiltros;
     private Usuario usuarioLogado;
+    private AlertDialog dialog;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -146,6 +149,7 @@ public class FiltroActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
@@ -157,7 +161,10 @@ public class FiltroActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void publicarPostagem() {
+        abrirDialogCarregamento("Salvando Postagem");
+
         Postagem postagem = new Postagem();
         postagem.setIdUsuario(UsuarioFirebase.getIdUsuario());
         postagem.setDescricao(txtLegendaPostagem.getText().toString());
@@ -180,6 +187,8 @@ public class FiltroActivity extends AppCompatActivity {
                 usuarioLogado.setPublicacoes(qtdPublicacoes);
                 usuarioLogado.atualizar();
                 //Log.i("teste", usuarioLogado.getNome());
+
+                dialog.cancel();
             }
 
             @Override
@@ -193,5 +202,16 @@ public class FiltroActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         finish();
         return false;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void abrirDialogCarregamento(String titulo){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle(titulo);
+        alert.setCancelable(false);
+        alert.setView(R.layout.carregando);
+
+        dialog = alert.create();
+        dialog.show();
     }
 }
